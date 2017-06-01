@@ -5,6 +5,7 @@
 #$ -l h_vmem=10G
 #$ -cwd
 
+echo hello world
 
 #Mdify the species name variable
 #For every fastq file to be downloaded, unhash the necesary lines and modify the vlaues for the SSR# and sex variables.
