@@ -31,24 +31,28 @@ if [ $SRR1n -eq 9 ]
 then
 #wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/$SRR1/$SRR1\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_1.fastq.gz
 #wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/$SRR1/$SRR1\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_2.fastq.gz
+echo good
 fi
 
 if [ $SRR1n -eq 10 ]
 then
 #wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/00${SRR1:9:11}/$SRR1/$SRR1\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_1.fastq.gz
 #wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/00${SRR1:9:11}/$SRR1/$SRR1\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_2.fastq.gz
+echo good
 fi
 
 if [ $SRR1n -eq 11 ]
 then
 #wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/0${SRR1:9:12}/$SRR1/$SRR1\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_1.fastq.gz
 #wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/0${SRR1:9:12}/$SRR1/$SRR1\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_2.fastq.gz
+echo good
 fi
 
 if [ $SRR1n -eq 12 ]
 then
 #wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/${SRR1:9:13}/$SRR1/$SRR1\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_1.fastq.gz
 #wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/${SRR1:9:13}/$SRR1/$SRR1\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_2.fastq.gz
+echo good
 fi
 
 ########################SRR2
