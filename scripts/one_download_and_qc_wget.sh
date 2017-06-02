@@ -18,8 +18,6 @@ mkdir /data/projects/lross_ssa/raw/$species/female
 #mkdir /data/projects/lross_ssa/analyses/$species/fastqc
 #mkdir /data/projects/lross_ssa/analyses/$species/fastqc/male
 #mkdir /data/projects/lross_ssa/analyses/$species/fastqc/female
-    
-echo test
 
 SRR=SRR2028039
 sex=male
