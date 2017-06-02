@@ -9,7 +9,7 @@
 #For every fastq file to be downloaded, unhash the necesary lines and modify the vlaues for the SSR# and sex variables.
 #IMPORTANT. Go to fastqc qsub script at /data/projects/lross_ssa/scripts/fastqc.sh and edit acordingly before running this script.
 
-species=homalodisca_vitripennis
+species=$1
 mkdir /data/projects/lross_ssa/raw/$species
 mkdir /data/projects/lross_ssa/raw/$species/male
 mkdir /data/projects/lross_ssa/raw/$species/female
@@ -19,33 +19,33 @@ mkdir /data/projects/lross_ssa/raw/$species/female
 #mkdir /data/projects/lross_ssa/analyses/$species/fastqc/male
 #mkdir /data/projects/lross_ssa/analyses/$species/fastqc/female
 
-SRR=SRR1865088
-sex=male
-echo -n $SRR | wc -c > SRRn.txt
-read SRRn < SRRn.txt ; rm -f SRRn.txt
+SRR1=$3
+sex=$2
+echo -n $SRR1 | wc -c > SRR1n.txt
+read SRR1n < SRR1n.txt ; rm -f SRR1n.txt
 
-if [ $SRRn -eq 9 ]
+if [ $SRR1n -eq 9 ]
 then
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/$SRR/$SRR\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/$SRR/$SRR\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/$SRR1/$SRR1\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/$SRR1/$SRR1\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_2.fastq.gz
 fi
 
-if [ $SRRn -eq 10 ]
+if [ $SRR1n -eq 10 ]
 then
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00${SRR:9:11}/$SRR/$SRR\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00${SRR:9:11}/$SRR/$SRR\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/00${SRR1:9:11}/$SRR1/$SRR1\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/00${SRR1:9:11}/$SRR1/$SRR1\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_2.fastq.gz
 fi
 
-if [ $SRRn -eq 11 ]
+if [ $SRR1n -eq 11 ]
 then
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/0${SRR:9:12}/$SRR/$SRR\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/0${SRR:9:12}/$SRR/$SRR\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/0${SRR1:9:12}/$SRR1/$SRR1\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/0${SRR1:9:12}/$SRR1/$SRR1\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_2.fastq.gz
 fi
 
-if [ $SRRn -eq 12 ]
+if [ $SRR1n -eq 12 ]
 then
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/${SRR:9:13}/$SRR/$SRR\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/${SRR:9:13}/$SRR/$SRR\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/${SRR1:9:13}/$SRR1/$SRR1\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR1:0:6}/${SRR1:9:13}/$SRR1/$SRR1\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR1\_2.fastq.gz
 fi
 
 gunzip /data/projects/lross_ssa/raw/$species/male/*
