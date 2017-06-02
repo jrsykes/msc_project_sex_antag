@@ -32,8 +32,8 @@ fi
 
 if [ $SRRn=10 ]
 then
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00${SRR:9:11}/YES/$SRR/$SRR\_1.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00${SRR:9:11}/$SRR/$SRR\_2.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/'00'${SRR:9:11}/$SRR/$SRR\_1.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/'00'${SRR:9:11}/$SRR/$SRR\_2.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
 fi
 
 if [ $SRRn=11 ]
