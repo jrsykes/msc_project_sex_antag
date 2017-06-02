@@ -9,7 +9,7 @@
 #For every fastq file to be downloaded, unhash the necesary lines and modify the vlaues for the SSR# and sex variables.
 #IMPORTANT. Go to fastqc qsub script at /data/projects/lross_ssa/scripts/fastqc.sh and edit acordingly before running this script.
 
-species=rhipicephalus_pulchellus
+species=ericerus_pela
 mkdir /data/projects/lross_ssa/raw/$species
 mkdir /data/projects/lross_ssa/raw/$species/male
 mkdir /data/projects/lross_ssa/raw/$species/female
@@ -19,7 +19,7 @@ mkdir /data/projects/lross_ssa/raw/$species/female
 #mkdir /data/projects/lross_ssa/analyses/$species/fastqc/male
 #mkdir /data/projects/lross_ssa/analyses/$species/fastqc/female
 
-SRR=SRR2028039
+SRR=SRR1027689
 sex=male
 echo -n $SRR | wc -c > SRRn.txt
 read SRRn < SRRn.txt
