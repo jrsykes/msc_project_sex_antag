@@ -22,7 +22,7 @@ mkdir /data/projects/lross_ssa/raw/$species/female
 SRR=SRR1027689
 sex=male
 echo -n $SRR | wc -c > SRRn.txt
-read SRRn < SRRn.txt
+read SRRn < SRRn.txt ; rm -f SRRn.txt
 
 if [ $SRRn=9 ]
 then
@@ -32,14 +32,14 @@ fi
 
 if [ $SRRn=10 ]
 then
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00${SRR:9:11}/$SRR/$SRR\_1.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00${SRR:9:11}/$SRR/$SRR\_2.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00\${SRR:9:11}/$SRR/$SRR\_1.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00\${SRR:9:11}/$SRR/$SRR\_2.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
 fi
 
 if [ $SRRn=11 ]
 then
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/0${SRR:9:12}/$SRR/$SRR\_1.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
-wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/0${SRR:9:12}/$SRR/$SRR\_2.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/0\${SRR:9:12}/$SRR/$SRR\_1.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
+wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/0\${SRR:9:12}/$SRR/$SRR\_2.fastq.gz > /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
 fi
 
 if [ $SRRn=12 ]
