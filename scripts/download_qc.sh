@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -q main.q
-#$ -pe smp 4
+#$ -pe smp 3
 #$ -l h_vmem=10G
 #$ -wd /data/projects/lross_ssa/analyses/scratch
 
