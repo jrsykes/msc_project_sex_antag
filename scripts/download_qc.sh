@@ -16,22 +16,22 @@ read SRRn < SRRn.txt ; rm -f SRRn.txt
 
 if [ $mode == 'paired' ]
 then
-if [ $SRR -eq 9 ]
+if [ $SRRn -eq 9 ]
 	then
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/$SRR/$SRR\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc/$sex /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/$SRR/$SRR\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc/$sex /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
 	
-	elif [ $SRR -eq 10 ]
+	elif [ $SRRn -eq 10 ]
 	then
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00${SRR:9:11}/$SRR/$SRR\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc/$sex /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/00${SRR:9:11}/$SRR/$SRR\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc/$sex /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
 	
-	elif [ $SRR -eq 11 ]
+	elif [ $SRRn -eq 11 ]
 	then
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/0${SRR:9:12}/$SRR/$SRR\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc/$sex /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/0${SRR:9:12}/$SRR/$SRR\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc/$sex /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
 
-	elif [ $SRR -eq 12 ]
+	elif [ $SRRn -eq 12 ]
 	then
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/${SRR:9:13}/$SRR/$SRR\_1.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc/$sex /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq.gz
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/${SRR:9:13}/$SRR/$SRR\_2.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc/$sex /data/projects/lross_ssa/raw/$species/$sex/$SRR\_2.fastq.gz
