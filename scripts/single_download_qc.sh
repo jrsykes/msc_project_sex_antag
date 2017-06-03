@@ -1,9 +1,3 @@
-#!/bin/bash​
-#$ -S /bin/bash
-#$ -q main.q
-#$ -pe smp 2
-#$ -l h_vmem=10G
-#$ -cwd
 
 #Mdify the species name variable
 #For every fastq file to be downloaded, unhash the necesary lines and modify the vlaues for the SSR# and sex variables.
@@ -36,5 +30,6 @@ then
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/${SRR:9:13}/$SRR/$SRR.fastq.gz -O /data/projects/lross_ssa/raw/$species/$sex/$SRR.fastq.gz && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc/$sex /data/projects/lross_ssa/raw/$species/$sex/$SRR.fastq.gz
 fi
 
-
+gunzip /data/projects/lross_ssa/raw/$species/male/*
+gunzip /data/projects/lross_ssa/raw/$species/female/*
 
