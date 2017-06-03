@@ -5,14 +5,16 @@ species=$1
 mkdir /data/projects/lross_ssa/raw/$species
 mkdir /data/projects/lross_ssa/raw/$species/male
 mkdir /data/projects/lross_ssa/raw/$species/female
+
 mkdir /data/projects/lross_ssa/analyses/$species
 mkdir /data/projects/lross_ssa/analyses/$species/fastqc
 mkdir /data/projects/lross_ssa/analyses/$species/fastqc/male
 mkdir /data/projects/lross_ssa/analyses/$species/fastqc/female
+
 mkdir /data/projects/lross_ssa/analyses/$species/trinity
 mkdir /data/projects/lross_ssa/analyses/$species/busco
 mkdir /data/projects/lross_ssa/analyses/$species/kallisto
-mkdir /data/projects/lross_ssa/analyses/$species/trinity
+
 mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic
 mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/male
 mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
