@@ -1,7 +1,6 @@
 
 
 species=$1
-mode=$2
 
 mkdir /data/projects/lross_ssa/raw/$species
 mkdir /data/projects/lross_ssa/raw/$species/male
@@ -19,64 +18,33 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/male
 mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 
 
-## one = species, two = SRR, three = sex
+## one = species, two = SRR, three = sex, four = paired or single end mode
 
-if [ $mode == 'paired' ]
-	then
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2026341 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028030 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028033 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028036 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028037 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028038 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028039 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028040 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028041 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028242 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028243 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2028244 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2030782 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2030783 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2031386 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2031386 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2031929 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR2031931 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR1852640 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR1852639 male
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR650709 male
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR317125 male
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/paired_download_qc.sh cimex_lectularius SRR317124 male
-fi
+script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
-if [ $mode == 'single' ]
-	then
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2026341 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028030 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028033 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028036 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028037 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028038 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028039 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028040 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028041 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028242 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028243 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2028244 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2030782 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2030783 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2031386 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2031386 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2031929 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR2031931 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR1852640 female
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR1852639 male
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR650709 male
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR317125 male
-bash /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/single_download_qc.sh cimex_lectularius SRR317124 male
-fi
+bash $script cimex_lectularius SRR2026341 female paired 
+bash $script cimex_lectularius SRR2028030 female paired
+bash $script cimex_lectularius SRR2028033 female paired
+bash $script cimex_lectularius SRR2028036 female paired
+bash $script cimex_lectularius SRR2028037 female paired
+bash $script cimex_lectularius SRR2028038 female paired
+bash $script cimex_lectularius SRR2028039 female paired
+bash $script cimex_lectularius SRR2028040 female paired
+bash $script cimex_lectularius SRR2028041 female paired
+bash $script cimex_lectularius SRR2028242 female paired
+bash $script cimex_lectularius SRR2028243 female paired
+bash $script cimex_lectularius SRR2028244 female paired
+bash $script cimex_lectularius SRR2030782 female paired
+bash $script cimex_lectularius SRR2030783 female paired
+bash $script cimex_lectularius SRR2031386 female paired
+bash $script cimex_lectularius SRR2031386 female paired
+bash $script cimex_lectularius SRR2031929 female paired
+bash $script cimex_lectularius SRR2031931 female paired
+bash $script cimex_lectularius SRR1852640 female paired
+bash $script cimex_lectularius SRR1852639 male paired
+bash $script cimex_lectularius SRR650709 male single
+bash $script cimex_lectularius SRR317125 male single
+bash $script cimex_lectularius SRR317124 male single
 
 
 
-#cp /data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/*.sh.* /data/projects/lross_ssa/raw/$species
-
-#qsub /data/projects/lross_ssa/scripts/fastqc.sh
