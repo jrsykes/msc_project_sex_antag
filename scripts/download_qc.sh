@@ -38,7 +38,7 @@ wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/${SRR:0:6}/${SRR:9:13}/$SRR/$SRR\_2.fast
 	else
 echo 'Error: command line arguments incorrect'
 	fi
-elif  $mode == 'single' ]
+elif [ $mode == 'single' ]
 	then
 	if [ $SRRn -eq 9 ]
 then
