@@ -39,7 +39,6 @@ qsub $script cimex_lectularius SRR2028244 female paired
 qsub $script cimex_lectularius SRR2030782 female paired
 qsub $script cimex_lectularius SRR2030783 female paired
 qsub $script cimex_lectularius SRR2031386 female paired
-qsub $script cimex_lectularius SRR2031386 female paired
 qsub $script cimex_lectularius SRR2031929 female paired
 qsub $script cimex_lectularius SRR2031931 female paired
 qsub $script cimex_lectularius SRR1852640 female paired
