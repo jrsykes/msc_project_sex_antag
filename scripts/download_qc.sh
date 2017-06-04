@@ -11,8 +11,8 @@ SRR=$2
 sex=$3
 mode=$4
 
-echo -n $SRR | wc -c > SRRn.txt
-read SRRn < SRRn.txt ; rm -f SRRn.txt
+echo -n $SRR | wc -c > $SRR\n.txt
+read SRRn < $SRR\n.txt ; rm -f $SRR\n.txt
 
 if [ $mode == 'paired' ]
 then
