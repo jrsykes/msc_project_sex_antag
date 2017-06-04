@@ -18,10 +18,9 @@ ln -s /data/projects/lross_ssa/analyses/$species/trimmomatic/male/* /data/projec
 ln -s /data/projects/lross_ssa/analyses/$species/trimmomatic/female/* /data/projects/lross_ssa/analyses/scratch/$species/links
 cat /data/projects/lross_ssa/analyses/scratch/$species/links/*1* > /data/projects/lross_ssa/analyses/scratch/$species/combined_1.fq
 cat /data/projects/lross_ssa/analyses/scratch/$species/links/*2* > /data/projects/lross_ssa/analyses/scratch/$species/combined_2.fq
-rm -rf /data/projects/lross_ssa/analyses/scratch/$species
-
 
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy ; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --left /data/projects/lross_ssa/analyses/scratch/$species/combined_1.fq --right /data/projects/lross_ssa/analyses/scratch/$species/combined_2.fq --CPU 32 --max_memory 100G --output /data/projects/lross_ssa/analyses/$species/trinity/
+
 fi
 
 if [ $mode == 'single' ]
@@ -36,6 +35,8 @@ cat /data/projects/lross_ssa/analyses/scratch/$species/links/* > /data/projects/
 
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --single /data/projects/lross_ssa/analyses/scratch/$species/combined.fq --CPU 32 --max_memory 100G --output /data/projects/lross_ssa/analyses/$species/trinity/
 fi
+
+rm -rf /data/projects/lross_ssa/analyses/scratch/$species
 
 ###### trim and busco ##########
 
