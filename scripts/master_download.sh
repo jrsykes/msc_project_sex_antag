@@ -24,19 +24,19 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
-qsub $script cimex_lectularius SRR2026341 female paired 
-qsub $script cimex_lectularius SRR2028030 female paired
-qsub $script cimex_lectularius SRR2028033 female paired
-qsub $script cimex_lectularius SRR2028036 female paired
-qsub $script cimex_lectularius SRR2028037 female paired
-qsub $script cimex_lectularius SRR2028038 female paired
-qsub $script cimex_lectularius SRR2028039 female paired
-qsub $script cimex_lectularius SRR2028040 female paired
-qsub $script cimex_lectularius SRR2028041 female paired
-qsub $script cimex_lectularius SRR2028242 female paired
-qsub $script cimex_lectularius SRR2028243 female paired
-qsub $script cimex_lectularius SRR2028244 female paired
-qsub $script cimex_lectularius SRR2030782 female paired
+#qsub $script cimex_lectularius SRR2026341 female paired 
+#qsub $script cimex_lectularius SRR2028030 female paired
+#qsub $script cimex_lectularius SRR2028033 female paired
+#qsub $script cimex_lectularius SRR2028036 female paired
+#qsub $script cimex_lectularius SRR2028037 female paired
+#qsub $script cimex_lectularius SRR2028038 female paired
+#qsub $script cimex_lectularius SRR2028039 female paired
+#qsub $script cimex_lectularius SRR2028040 female paired
+#qsub $script cimex_lectularius SRR2028041 female paired
+#qsub $script cimex_lectularius SRR2028242 female paired
+#qsub $script cimex_lectularius SRR2028243 female paired
+#qsub $script cimex_lectularius SRR2028244 female paired
+#qsub $script cimex_lectularius SRR2030782 female paired
 qsub $script cimex_lectularius SRR2030783 female paired
 qsub $script cimex_lectularius SRR2031386 female paired
 qsub $script cimex_lectularius SRR2031929 female paired
