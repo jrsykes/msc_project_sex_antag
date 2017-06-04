@@ -8,8 +8,7 @@ mkdir /data/projects/lross_ssa/raw/$species/female
 
 mkdir /data/projects/lross_ssa/analyses/$species
 mkdir /data/projects/lross_ssa/analyses/$species/fastqc
-mkdir /data/projects/lross_ssa/analyses/$species/fastqc/male
-mkdir /data/projects/lross_ssa/analyses/$species/fastqc/female
+mkdir /data/projects/lross_ssa/analyses/$species/fastqc2
 
 mkdir /data/projects/lross_ssa/analyses/$species/trinity
 mkdir /data/projects/lross_ssa/analyses/$species/busco
