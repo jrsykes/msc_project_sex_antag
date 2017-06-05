@@ -28,10 +28,10 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
-qsub $script ericerus_pela SRR1027689 female single   
-qsub $script ericerus_pela SRR1027688 female single 
-qsub $script ericerus_pela SRR1027687 female single  
-qsub $script ericerus_pela SRR1027692 male single 
+qsub $script agrilus_planipennis SRR1791267 female paired 
+qsub $script agrilus_planipennis SRR1791269 male paired
+#qsub $script ericerus_pela SRR1027687 female single  
+#qsub $script ericerus_pela SRR1027692 male single 
 #qsub $script cimex_lectularius SRR2028037 female paired
 #qsub $script cimex_lectularius SRR2028038 female paired
 #qsub $script cimex_lectularius SRR2028039 female paired
