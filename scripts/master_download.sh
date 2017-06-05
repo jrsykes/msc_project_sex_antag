@@ -2,6 +2,12 @@
 
 species=$1
 
+if [ $species == ' ' ]
+then
+echo 'Enter species name at \command line'
+exit 
+fi
+
 mkdir /data/projects/lross_ssa/raw/$species
 mkdir /data/projects/lross_ssa/raw/$species/male
 mkdir /data/projects/lross_ssa/raw/$species/female
