@@ -11,7 +11,7 @@ SRR=$2
 sex=$3
 mode=$4
 
-/exports/software/sratoolkit/sratoolkit.2.8.2-1-ubuntu64/bin/fastq-dump --outdir /data/projects/lross_ssa/raw/$species/$sex --defline-seq '@$sn[_$rn]/$ri' --split-files $SRR
+#/exports/software/sratoolkit/sratoolkit.2.8.2-1-ubuntu64/bin/fastq-dump --outdir /data/projects/lross_ssa/raw/$species/$sex --defline-seq '@$sn[_$rn]/$ri' --split-files $SRR
 
 if [ $mode == 'paired' ]
 then
@@ -21,7 +21,7 @@ then
 elif 
 [ $mode == 'single' ]
 then
-/exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc /data/projects/lross_ssa/raw/$species/$sex/$SRR.fastq
+/exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq
 fi
 
 #echo -n $SRR | wc -c > $SRR\n.txt
