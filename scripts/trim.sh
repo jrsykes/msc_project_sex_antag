@@ -14,7 +14,7 @@ mode=$4
 #### SINGLE END MODE ####
 if [ $mode == "single" ]
 then
-java -jar /exports/software/trimmomatic/Trimmomatic-0.36/trimmomatic-0.36.jar SE -phred33 /data/projects/lross_ssa/raw/$species/$sex/$SRR.fastq /data/projects/lross_ssa/analyses/$species/trimmomatic/$sex/$SRR.fq ILLUMINACLIP:/exports/software/trimmomatic/Trimmomatic-0.36/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 HEADCROP:12 && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc2 /data/projects/lross_ssa/analyses/$species/trimmomatic/$sex/$SRR.fq && rm -f /data/projects/lross_ssa/raw/$species/$sex/$SRR.fastq
+java -jar /exports/software/trimmomatic/Trimmomatic-0.36/trimmomatic-0.36.jar SE -phred33 /data/projects/lross_ssa/raw/$species/$sex/$SRR\_1.fastq /data/projects/lross_ssa/analyses/$species/trimmomatic/$sex/$SRR.fq ILLUMINACLIP:/exports/software/trimmomatic/Trimmomatic-0.36/adapters/TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36 HEADCROP:12 && /exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc2 /data/projects/lross_ssa/analyses/$species/trimmomatic/$sex/$SRR.fq && rm -f /data/projects/lross_ssa/raw/$species/$sex/$SRR.fastq
 #### PAIRED END MODE ####
 elif [ $mode == "paired" ]
 then
