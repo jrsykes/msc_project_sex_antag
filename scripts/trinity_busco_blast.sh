@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -q main.q
-#$ -pe smp 32
+#$ -pe smp 24
 #$ -l h_vmem=100G
 #$ -wd /data/projects/lross_ssa/analyses/scratch/trinity
 
