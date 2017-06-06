@@ -1,8 +1,8 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -q main.q
-#$ -pe smp 4
-#$ -l h_vmem=10G
+#$ -pe smp 24
+#$ -l h_vmem=100G
 #$ -wd /data/projects/lross_ssa/analyses/scratch/trinity
 
 species=$1
@@ -51,7 +51,7 @@ mode=$2
 
 ######### indexing #########
 
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $species_indexed.idx /data/projects/lross_ssa/analyses/$species/trinity/Trinity1k.fasta && mv /data/projects/lross_ssa/analyses/scratch/trinity/$species_indexed.idx /data/projects/lross_ssa/analyses/$species/kallisto/
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $species\_indexed.idx /data/projects/lross_ssa/analyses/$species/trinity/Trinity1k.fasta && mv /data/projects/lross_ssa/analyses/scratch/trinity/$species_indexed.idx /data/projects/lross_ssa/analyses/$species/kallisto/
 
 
 
