@@ -10,6 +10,7 @@ SRR=$2
 sex=$3
 mode=$4
 
+#/exports/software/fastqc/fastqc_v0.11.5/FastQC/fastqc --outdir /data/projects/lross_ssa/analyses/$species/fastqc2 /data/projects/lross_ssa/analyses/$species/trimmomatic/$sex/$SRR\_1.fq /data/projects/lross_ssa/analyses/$species/trimmomatic/$sex/$SRR\_2.fq
 
 #### SINGLE END MODE ####
 if [ $mode == "single" ]
