@@ -1,8 +1,8 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -q main.q
-#$ -pe smp 24
-#$ -l h_vmem=100G
+#$ -pe smp 4
+#$ -l h_vmem=10G
 #$ -wd /data/projects/lross_ssa/analyses/scratch/trinity
 
 species=$1
