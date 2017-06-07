@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -q main.q
-#$ -pe smp 24
+#$ -pe smp 32
 #$ -l h_vmem=100G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/trinity
 
@@ -45,12 +45,12 @@ fi
 if [ $MODE == 'single' ]
 then
 
-mkdir /scratch/jsykes/trinity_links_$SPECIES
+mkdir /scratch/jsykes/trinity_links_$SPECIES 
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/.fq /scratch/jsykes/trinity_links_$SPECIES
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/.fq /scratch/jsykes/trinity_links_$SPECIES
 INPUT=$(for file in $(ls -1 /scratch/jsykes/trinity_links_$SPECIES); do readlink -f $file ;done | paste -sd "," -)
 
-mkdir /scratch/jsykes/$SPECIES
+mkdir /scratch/jsykes/$SPECIES ########## Not sure if this is needed #########
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --single $INPUT --CPU 32 --max_memory 100G --output /scratch/jsykes/trinity_$SPECIES && rsync -a /scratch/jsykes/trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/
 rm -rf /scratch/jsykes/trinity_links_$SPECIES
 fi
