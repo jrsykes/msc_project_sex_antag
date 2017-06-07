@@ -1,7 +1,6 @@
 
 SPECIES=$1
 MODE=$2
-mkdir /data/projects/lross_ssa/analyses/temp_out/trinity/$SPECIES
 
 #!/bin/bash
 #$ -S /bin/bash
