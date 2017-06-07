@@ -21,8 +21,8 @@ mkdir /scratch/jsykes/trinity_$SPECIES
 #SCRATCH=/scratch/jsykes/
 #-outdir=$SCRATCH/trinity  
 
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/temp_out/trinity
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/temp_out/trinity
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity
 
 if [ $MODE == 'paired' ]
 then
