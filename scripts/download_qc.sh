@@ -3,7 +3,7 @@
 #$ -q main.q
 #$ -pe smp 4
 #$ -l h_vmem=10G
-#$ -wd /data/projects/lross_ssa/analyses/scratch/download
+#$ -wd /data/projects/lross_ssa/analyses/temp_out/download
 
 
 species=$1

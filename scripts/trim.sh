@@ -3,7 +3,7 @@
 #$ -q main.q
 #$ -pe smp 8
 #$ -l h_vmem=10G
-#$ -wd /data/projects/lross_ssa/analyses/scratch/trim
+#$ -wd /data/projects/lross_ssa/analyses/temp_out/trim
 
 species=$1
 SRR=$2
