@@ -3,7 +3,7 @@
 #$ -q main.q
 #$ -pe smp 24
 #$ -l h_vmem=100G
-#$ -wd /data/projects/lross_ssa/analyses/scratch/trinity
+#$ -wd /data/projects/lross_ssa/analyses/temp_out/trinity
 
 
 SPECIES=$1
@@ -20,6 +20,9 @@ alias rsyncdel='rsync -a --remove-source-files'
 mkdir /scratch/jsykes/trinity_$SPECIES
 #SCRATCH=/scratch/jsykes/
 #-outdir=$SCRATCH/trinity  
+
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/temp_out/trinity
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/temp_out/trinity
 
 if [ $MODE == 'paired' ]
 then
@@ -52,11 +55,12 @@ PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy; /exports/software/trin
 rm -rf /scratch/jsykes/trinity_links
 fi
 
+rm -f /data/projects/lross_ssa/analyses/temp_out/trinity/*.fq
 rm -rf /scratch/jsykes/trinity_$SPECIES
 ###### trim and busco ##########
 
-/data/projects/lross_ssa/scripts/faFilter -minSize=1000 /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && module load blast ; PATH=$PATH:/exports/software/hmmer/hmmer-3.1b1/bin/ ; python /exports/software/busco/busco-v2.0.1/BUSCO.py -f -i /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta -o busco_$SPECIES -l /exports/software/busco/arthropoda -m tran -c 16 -sp fly && mkdir /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && rsync -a /data/projects/lross_ssa/analyses/scratch/trinity/run_busco_$SPECIES/* /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && python /exports/software/busco/busco-v2.0.1/BUSCO_plot.py -wd /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && mv /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/busco_figure.png /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/busco_$SPECIES.png && gzip /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/* && gzip /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*
-rsyncdel /data/projects/lross_ssa/analyses/scratch/trinity/run_busco_$SPECIES/ /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries
+/data/projects/lross_ssa/scripts/faFilter -minSize=1000 /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && module load blast ; PATH=$PATH:/exports/software/hmmer/hmmer-3.1b1/bin/ ; python /exports/software/busco/busco-v2.0.1/BUSCO.py -f -i /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta -o busco_$SPECIES -l /exports/software/busco/arthropoda -m tran -c 16 -sp fly && mkdir /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && rsync -a /data/projects/lross_ssa/analyses/temp_out/trinity/run_busco_$SPECIES/* /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && python /exports/software/busco/busco-v2.0.1/BUSCO_plot.py -wd /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && mv /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/busco_figure.png /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/busco_$SPECIES.png && gzip /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/* && gzip /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*
+rsyncdel /data/projects/lross_ssa/analyses/temp_out/trinity/run_busco_$SPECIES/ /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries
 ########## blast ##########
 
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/trinity/blast 
@@ -66,7 +70,7 @@ blastn -task megablast -query /data/projects/lross_ssa/analyses/$SPECIES/trinity
 
 ######### indexing #########
 
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && rsync -a /data/projects/lross_ssa/analyses/scratch/trinity_$SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/kallisto/
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && rsync -a /data/projects/lross_ssa/analyses/temp_out/trinity_$SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/kallisto/
 
 
 
