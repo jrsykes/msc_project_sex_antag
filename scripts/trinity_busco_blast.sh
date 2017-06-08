@@ -23,7 +23,6 @@ mkdir /scratch/jsykes/trinity_$SPECIES
 
 if [ $MODE == 'paired' ]
 then
-
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
@@ -36,7 +35,7 @@ RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomat
 
 
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy ; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --left $LEFT --right $RIGHT --CPU 32 --max_memory 100G --output /scratch/jsykes/trinity_$SPECIES && rsync -a /scratch/jsykes/trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/
-rm -rf /scratch/jsykes/trinity_links_$SPECIES_*
+
 fi
 
 if [ $MODE == 'single' ]
@@ -52,6 +51,7 @@ PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy; /exports/software/trin
 rm -rf /scratch/jsykes/trinity_links_$SPECIES
 fi
 
+rm -rf /scratch/jsykes/trinity_links_$SPECIES_*
 rm -rf /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combine*
 rm -rf /scratch/jsykes/trinity_$SPECIES
 
