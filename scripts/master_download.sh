@@ -30,10 +30,10 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
  
-qsub $script teleopsis_dalmanni SRR1738676 male paired 
-qsub $script teleopsis_dalmanni SRR1738677 female paired
-#qsub $script teleopsis_dalmanni SRR1184536 female paired
-#qsub $script teleopsis_dalmanni SRR1184535 female paired
+#qsub $script teleopsis_dalmanni SRR1738676 male paired 
+#qsub $script teleopsis_dalmanni SRR1738677 female paired
+qsub $script teleopsis_dalmanni SRR1184536 female paired
+qsub $script teleopsis_dalmanni SRR1184535 female paired
 #qsub $script teleopsis_dalmanni SRR1184534 female paired
 #qsub $script teleopsis_dalmanni SRR1184541 male paired
 #qsub $script teleopsis_dalmanni SRR1184537 male paired
