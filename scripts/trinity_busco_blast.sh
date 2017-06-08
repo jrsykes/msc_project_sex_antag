@@ -26,7 +26,8 @@ then
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
-LEFT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1); do readlink -f $file ;done | paste -sd "," -) | sed 's/,/, /g'
+LINKS_LEFT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1); do readlink -f $file ;done | paste -sd "," -)
+echo $LINKS_LEFT | sed 's/,/, /' > /data/projects/lross_ssa/analyses/temp_out/trinity/LEFT_$SPECIES.txt; LEFT=$(</data/projects/lross_ssa/analyses/temp_out/trinity/LEFT_$SPECIES.txt)
 echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
