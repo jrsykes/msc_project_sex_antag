@@ -26,18 +26,18 @@ then
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
-LINKS_LEFT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1); do readlink -f $file ;done | paste -sd "," -)
-echo $LINKS_LEFT | sed 's/,/, /' > /data/projects/lross_ssa/analyses/temp_out/trinity/LEFT_$SPECIES.txt; LEFT=$(</data/projects/lross_ssa/analyses/temp_out/trinity/LEFT_$SPECIES.txt)
-#echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+LEFT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1); do readlink -f $file ;done | paste -sd "," -)
+
+
 
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
-LINKS_RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2); do readlink -f $file ;done | paste -sd "," -) | sed 's/,/, /g'
-echo $LINKS_RIGHT | sed 's/,/, /' > /data/projects/lross_ssa/analyses/temp_out/trinity/RIGHT_$SPECIES.txt; RIGHT=$(</data/projects/lross_ssa/analyses/temp_out/trinity/LEFT_$SPECIES.txt)
-rm -r /data/projects/lross_ssa/analyses/temp_out/trinity/*_$SPECIES.txt
-#echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
-#exit
+RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2); do readlink -f $file ;done | paste -sd "," -) | sed 's/,/, /g'
+
+echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy ; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --left $LEFT --right $RIGHT --CPU 32 --max_memory 100G --output /scratch/jsykes/trinity_$SPECIES && rsync -a /scratch/jsykes/trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/
 
 fi
