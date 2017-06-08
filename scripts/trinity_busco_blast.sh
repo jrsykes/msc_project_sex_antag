@@ -21,23 +21,20 @@ mkdir /scratch/jsykes/trinity_$SPECIES
 #SCRATCH=/scratch/jsykes/
 #-outdir=$SCRATCH/trinity  
 
-#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity
-#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity
-
 if [ $MODE == 'paired' ]
 then
 
-mkdir /scratch/jsykes/trinity_links_$SPECIES_left
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /scratch/jsykes/trinity_links_$SPECIES_left
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*1.fq /scratch/jsykes/trinity_links_$SPECIES_left
-LEFT=$(for file in $(ls -1 /scratch/jsykes/trinity_links_$SPECIES_left); do readlink -f $file ;done | paste -sd "," -)
+mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
+LEFT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1); do readlink -f $file ;done | paste -sd "," -)
 
-mkdir /scratch/jsykes/trinity_links_$SPECIES_right
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*2.fq /scratch/jsykes/trinity_links_$SPECIES_right
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*2.fq /scratch/jsykes/trinity_links_$SPECIES_right
-RIGHT=$(for file in $(ls -1 /scratch/jsykes/trinity_links_$SPECIES_right); do readlink -f $file ;done | paste -sd "," -)
+mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
+RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2); do readlink -f $file ;done | paste -sd "," -)
 
-#mkdir /scratch/jsykes/$SPECIES
+
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy ; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --left $LEFT --right $RIGHT --CPU 32 --max_memory 100G --output /scratch/jsykes/trinity_$SPECIES && rsync -a /scratch/jsykes/trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/
 rm -rf /scratch/jsykes/trinity_links_$SPECIES_*
 fi
@@ -45,22 +42,22 @@ fi
 if [ $MODE == 'single' ]
 then
 
-mkdir /scratch/jsykes/trinity_links_$SPECIES 
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/.fq /scratch/jsykes/trinity_links_$SPECIES
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/.fq /scratch/jsykes/trinity_links_$SPECIES
-INPUT=$(for file in $(ls -1 /scratch/jsykes/trinity_links_$SPECIES); do readlink -f $file ;done | paste -sd "," -)
+mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
+INPUT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined); do readlink -f $file ;done | paste -sd "," -)
 
-#mkdir /scratch/jsykes/$SPECIES ########## Not sure if this is needed #########
+
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --single $INPUT --CPU 32 --max_memory 100G --output /scratch/jsykes/trinity_$SPECIES && rsync -a /scratch/jsykes/trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/
 rm -rf /scratch/jsykes/trinity_links_$SPECIES
 fi
 
-#rm -f /data/projects/lross_ssa/analyses/temp_out/trinity/*.fq
+rm -rf /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combine*
 rm -rf /scratch/jsykes/trinity_$SPECIES
 
 ###### trim and busco ##########
 
-/data/projects/lross_ssa/scripts/faFilter -minSize=1000 /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && module load blast ; PATH=$PATH:/exports/software/hmmer/hmmer-3.1b1/bin/ ; python /exports/software/busco/busco-v2.0.1/BUSCO.py -f -i /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta -o busco_$SPECIES -l /exports/software/busco/arthropoda -m tran -c 16 -sp fly && mkdir /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && rsyncdel /data/projects/lross_ssa/analyses/temp_out/trinity/run_busco_$SPECIES /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && python /exports/software/busco/busco-v2.0.1/BUSCO_plot.py -wd /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && rsyncdel /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/busco_figure.png /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_$SPECIES.png #&& gzip /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/* && gzip /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*
+/data/projects/lross_ssa/scripts/faFilter -minSize=1000 /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && module load blast ; PATH=$PATH:/exports/software/hmmer/hmmer-3.1b1/bin/ ; python /exports/software/busco/busco-v2.0.1/BUSCO.py -f -i /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta -o busco_$SPECIES -l /exports/software/busco/arthropoda -m tran -c 16 -sp fly && mkdir /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && rsyncdel /data/projects/lross_ssa/analyses/temp_out/trinity/run_busco_$SPECIES /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && python /exports/software/busco/busco-v2.0.1/BUSCO_plot.py -wd /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && rsyncdel /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/busco_figure.png /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_$SPECIES.png
 rm -rf /data/projects/lross_ssa/analyses/temp_out/trinity
 
 ########## blast ##########
