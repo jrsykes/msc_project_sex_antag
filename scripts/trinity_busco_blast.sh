@@ -33,7 +33,7 @@ LEFT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomati
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
-RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2); do readlink -f $file ;done | paste -sd "," -) | sed 's/,/, /g'
+RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2); do readlink -f $file ;done | paste -sd "," -)
 
 echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
