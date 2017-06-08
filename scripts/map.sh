@@ -2,11 +2,23 @@
 #$ -S /bin/bash
 #$ -q main.q
 #$ -pe smp 4
-#$ -l h_vmem=10G
-#$ -cwd
+#$ -l h_vmem=20G
+#$ -wd /data/projects/lross_ssa/analyses/temp_out/map
 
-species=$1
+SPECIES=$1
 SRR=$2
-sex=$3
+SEX=$3
+MODE=$4
 
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$species/kallisto/$species\_indexed.idx -o $SRR -b 100 /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$sex/$SRR\_1.fq.gz /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$sex/$SRR\_2.fq.gz
+if [ $MODE == 'paired' ]
+	then
+
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/bemisia_tabaci/kallisto/$SRR -b 100 /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$SEX/$SRR\_2.fq
+
+fi
+
+if [ $MODE == 'single' ]
+	then
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/bemisia_tabaci/kallisto/$SRR -b 100 /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$SEX/$SRR\_2.fq
+
+fi
