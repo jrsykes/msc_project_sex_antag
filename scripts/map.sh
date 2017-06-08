@@ -13,7 +13,7 @@ MODE=$4
 if [ $MODE == 'paired' ]
 	then
 
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/bemisia_tabaci/kallisto/$SRR -b 100 /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$SEX/$SRR\_2.fq
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_2.fq
 
 fi
 
