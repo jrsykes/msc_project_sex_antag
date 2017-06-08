@@ -52,7 +52,7 @@ rm -rf /scratch/jsykes/trinity_links_$SPECIES
 fi
 
 rm -rf /scratch/jsykes/trinity_links_$SPECIES_*
-rm -rf /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combine*
+#rm -rf /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combine*
 rm -rf /scratch/jsykes/trinity_$SPECIES
 
 ###### trim and busco ##########
