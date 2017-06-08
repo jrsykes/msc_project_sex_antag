@@ -24,6 +24,7 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic
 mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/male
 mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 
+
 ## one = species, two = SRR, three = sex, four = paired or single end mode
 
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
