@@ -30,10 +30,10 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
  
-qsub $script phlebotomus_perniciosus SRR2075602 male paired 
-qsub $script phlebotomus_perniciosus SRR2075601 male paired
-#qsub $script phlebotomus_perniciosus SRR2074666 male paired
-#qsub $script phlebotomus_perniciosus SRR2075600 female paired
+#qsub $script phlebotomus_perniciosus SRR2075602 male paired 
+#qsub $script phlebotomus_perniciosus SRR2075601 male paired
+qsub $script phlebotomus_perniciosus SRR2074666 male paired
+qsub $script phlebotomus_perniciosus SRR2075600 female paired
 #qsub $script phlebotomus_perniciosus SRR2075599 female paired
 #qsub $script phlebotomus_perniciosus SRR2074672 female paired
 
