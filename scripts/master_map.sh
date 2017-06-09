@@ -2,8 +2,11 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/map.sh
 
 ### 1 =species. 2 = SRR, 3 = sex, 4 = paired/single end mode
 
-qsub $script varroa_destructor SRR5377265 male paired 
-qsub $script varroa_destructor SRR5377267 female paired
-qsub $script varroa_destructor SRR5377268 female paired
-#qsub $script  SRR1027692 male single 
-
+qsub $script tetranychus_urticae SRR4043745 female paired
+qsub $script tetranychus_urticae SRR4043744 female paired
+qsub $script tetranychus_urticae SRR4043743 female paired
+qsub $script tetranychus_urticae SRR4043742 female paired
+qsub $script tetranychus_urticae SRR4043741 male paired
+qsub $script tetranychus_urticae SRR4043740 male paired
+qsub $script tetranychus_urticae SRR4043739 male paired
+qsub $script tetranychus_urticae SRR4043738 male paired
