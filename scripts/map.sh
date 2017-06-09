@@ -26,12 +26,19 @@ if [ $MODE == 'single' ]
 
 fi
 
+####### setting up files for sleuth #########
+
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/kallisto/kal_results
 touch /data/projects/lross_ssa/analyses/$SPECIES/kallisto/kal_results/hiseq_info.txt
 
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/kallisto/kal_results/kal_files
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR /data/projects/lross_ssa/analyses/$SPECIES/kallisto/kal_results/kal_files/$SRR
 
+#mkdir /data/projects/lross_ssa/analyses/bemisia_tabaci/kallisto/kal_results
+#touch /data/projects/lross_ssa/analyses/bemisia_tabaci/kallisto/kal_results/hiseq_info.txt
+
+#mkdir /data/projects/lross_ssa/analyses/bemisia_tabaci/kallisto/kal_results/kal_files
+#ln -s /data/projects/lross_ssa/analyses/bemisia_tabaci/kallisto/SRR* /data/projects/lross_ssa/analyses/bemisia_tabaci/kallisto/kal_results/kal_files/
 
 #### combined method. Did not work as only produced one abundance file instead of one per individal.
 
