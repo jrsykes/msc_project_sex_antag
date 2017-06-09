@@ -11,6 +11,7 @@ qsub $script ceratosolen_solmsi SRR974928 male paired
 qsub $script ceratosolen_solmsi SRR974926 male paired
 
 
+qsub $script frankliniella_occidentalis SRR1826956 female paired
+qsub $script frankliniella_occidentalis SRR1826954 male paired
+
 #qsub $script phlebotomus_perniciosus SRR2074672 female paired
-#qsub $script teleopsis_dalmanni SRR1184537 male paired
-#qsub $script teleopsis_dalmanni SRR1184533 male paired
