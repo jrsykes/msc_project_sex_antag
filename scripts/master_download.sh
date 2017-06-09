@@ -32,9 +32,9 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_q
  
 #qsub $script ceratosolen_solmsi SRR974925 female paired 
 #qsub $script ceratosolen_solmsi SRR974929 female paired
-qsub $script ceratosolen_solmsi SRR974927 female paired
-qsub $script ceratosolen_solmsi SRR974928 male paired
-#qsub $script ceratosolen_solmsi SRR974926 male paired
+#qsub $script ceratosolen_solmsi SRR974927 female paired
+#qsub $script ceratosolen_solmsi SRR974928 male paired
+qsub $script ceratosolen_solmsi SRR974926 male paired
 
 
 #qsub $script phlebotomus_perniciosus SRR2074672 female paired
