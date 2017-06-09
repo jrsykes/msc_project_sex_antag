@@ -30,12 +30,13 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
  
-#qsub $script athalia_rosae SRR1842142 male paired 
-#qsub $script athalia_rosae SRR1842141 male paired
-qsub $script athalia_rosae SRR1842140 female paired
-qsub $script athalia_rosae SRR1842139 female paired
+qsub $script ceratosolen_solmsi SRR974925 female paired 
+qsub $script ceratosolen_solmsi SRR974929 female paired
+#qsub $script ceratosolen_solmsi SRR974927 female paired
+#qsub $script ceratosolen_solmsi SRR974928 male paired
+#qsub $script ceratosolen_solmsi SRR974926 male paired
 
-#qsub $script phlebotomus_perniciosus SRR2075599 female paired
+
 #qsub $script phlebotomus_perniciosus SRR2074672 female paired
 #qsub $script teleopsis_dalmanni SRR1184537 male paired
 #qsub $script teleopsis_dalmanni SRR1184533 male paired
