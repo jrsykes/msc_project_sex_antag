@@ -21,6 +21,9 @@ mkdir /scratch/jsykes/trinity_$SPECIES
 #SCRATCH=/scratch/jsykes/
 #-outdir=$SCRATCH/trinity  
 
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
+ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
+
 if [ $MODE == 'paired' ]
 then
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
@@ -32,9 +35,6 @@ mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
 RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2); do readlink -f $file ;done | paste -sd "," -)
-
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
 
 #echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 #echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
@@ -73,9 +73,30 @@ mkdir /data/projects/lross_ssa/analyses/$SPECIES/blast
 module load blast
 blastn -task megablast -query /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta -db /exports/blast_db/nt -outfmt '6 qseqid staxids bitscore std' -culling_limit 5 -num_threads 64 -evalue 1e-25 -out /scratch/jsykes/blastn_$SPECIES.out && mv /scratch/jsykes/blastn_$SPECIES.out /data/projects/lross_ssa/analyses/$SPECIES/blast/ && sort -k 13,13 -n /data/projects/lross_ssa/analyses/$SPECIES/blast/blastn_$SPECIES.out > /data/projects/lross_ssa/analyses/$SPECIES/blast/$SPECIES\_blastn_sorted.out && rm -f /data/projects/lross_ssa/analyses/$SPECIES/blast/blastn_$SPECIES.out && touch blast_$SPECIES.done
 
-######### indexing #########
 
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && mv /data/projects/lross_ssa/analyses/temp_out/trinity/$SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/kallisto/
+
+######### indexing #########
+### for single end mode avergae fragment length and standard deviation are estimated to be 200 and 20 respectivly.
+
+if [ $MODE == 'paired' ]
+then
+
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/ /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta
+
+fi
+
+if [ $MODE == 'single' ]
+then
+
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/ --single -l 200 -s 20 /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta
+
+fi
+
+
+
+
+
+
 
 
 
