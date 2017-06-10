@@ -71,7 +71,7 @@ rm -rf /scratch/jsykes/trinity_$SPECIES
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/blast 
 
 module load blast
-blastn -task megablast -query /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta -db /exports/blast_db/nt -outfmt '6 qseqid staxids bitscore std' -culling_limit 5 -num_threads 64 -evalue 1e-25 -out /scratch/jsykes/blastn_$SPECIES.out && mv /scratch/jsykes/blastn_$SPECIES.out /data/projects/lross_ssa/analyses/$SPECIES/blast/ && sort -k 13,13 -n /data/projects/lross_ssa/analyses/$SPECIES/blast/blastn_$SPECIES.out > /data/projects/lross_ssa/analyses/$SPECIES/blast/blastn_$SPECIES\_sorted.out && rm -f /data/projects/lross_ssa/analyses/$SPECIES/blast/blastn_$SPECIES.out && touch blast_$SPECIES.done
+blastn -task megablast -query /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta -db /exports/blast_db/nt -outfmt '6 qseqid staxids bitscore std' -culling_limit 5 -num_threads 64 -evalue 1e-25 -out /scratch/jsykes/blastn_$SPECIES.out && mv /scratch/jsykes/blastn_$SPECIES.out /data/projects/lross_ssa/analyses/$SPECIES/blast/ && sort -k 13,13 -n /data/projects/lross_ssa/analyses/$SPECIES/blast/blastn_$SPECIES.out > /data/projects/lross_ssa/analyses/$SPECIES/blast/$SPECIES\_blastn_sorted.out && rm -f /data/projects/lross_ssa/analyses/$SPECIES/blast/blastn_$SPECIES.out && touch blast_$SPECIES.done
 
 ######### indexing #########
 
