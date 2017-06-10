@@ -30,10 +30,12 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
  
-#qsub $script nasonia_giraulti SRR2773799 female single
-#qsub $script nasonia_giraulti SRR2773798 female single
-#qsub $script nasonia_giraulti SRR2773797 female single
-#qsub $script nasonia_giraulti SRR2773796 female single
+qsub $script anoplophora_glabripennis SRR1799851 female paired
+qsub $script anoplophora_glabripennis SRR1799852 male paired
+
+#qsub $script leptinotarsa_decemlineata SRR1827566 male paired
+#qsub $script leptinotarsa_decemlineata SRR1827565 female paired
+
 #qsub $script nasonia_giraulti SRR2773795 female single
 #qsub $script nasonia_giraulti SRR2773794 female single
 #qsub $script nasonia_giraulti SRR1566030 female single
@@ -46,8 +48,8 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_q
 #qsub $script nasonia_giraulti SRR1566032 male single
 #qsub $script nasonia_giraulti SRR1566031 male single
 #qsub $script nasonia_giraulti SRR1566027 male single
-qsub $script nasonia_giraulti SRR1566026 male single
-qsub $script nasonia_giraulti SRR1566025 male single
+#qsub $script nasonia_giraulti SRR1566026 male single
+#qsub $script nasonia_giraulti SRR1566025 male single
 
 
 
