@@ -42,10 +42,10 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_q
 #qsub $script nasonia_giraulti SRR1566024 female single
 #qsub $script nasonia_giraulti SRR1566023 female single
 #qsub $script nasonia_giraulti SRR1566022 female single
-qsub $script nasonia_giraulti SRR1566033 male single
-qsub $script nasonia_giraulti SRR1566032 male single
-#qsub $script nasonia_giraulti SRR1566031 male single
-#qsub $script nasonia_giraulti SRR1566027 male single
+#qsub $script nasonia_giraulti SRR1566033 male single
+#qsub $script nasonia_giraulti SRR1566032 male single
+qsub $script nasonia_giraulti SRR1566031 male single
+qsub $script nasonia_giraulti SRR1566027 male single
 #qsub $script nasonia_giraulti SRR1566026 male single
 #qsub $script nasonia_giraulti SRR1566025 male single
 
