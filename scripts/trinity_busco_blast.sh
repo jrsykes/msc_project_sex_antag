@@ -36,8 +36,8 @@ RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomat
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
 
-echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
-echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+#echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+#echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 
 
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy ; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --left $LEFT --right $RIGHT --CPU 32 --max_memory 100G --output /scratch/jsykes/trinity_$SPECIES && rsync -a /scratch/jsykes/trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/
