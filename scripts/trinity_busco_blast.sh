@@ -36,9 +36,9 @@ RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomat
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
 
-#echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
-#echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
-#exit
+echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+
 
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy ; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --left $LEFT --right $RIGHT --CPU 32 --max_memory 100G --output /scratch/jsykes/trinity_$SPECIES && rsync -a /scratch/jsykes/trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/
 
@@ -63,7 +63,7 @@ rm -rf /scratch/jsykes/trinity_$SPECIES
 
 ###### trim and busco ##########
 
-/data/projects/lross_ssa/scripts/faFilter -minSize=1000 /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && module load blast ; PATH=$PATH:/exports/software/hmmer/hmmer-3.1b1/bin/ ; python /exports/software/busco/busco-v2.0.1/BUSCO.py -f -i /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta -o busco_$SPECIES -l /exports/software/busco/arthropoda -m tran -c 16 -sp fly && mkdir /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && mv /data/projects/lross_ssa/analyses/temp_out/trinity/run_busco_$SPECIES /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && python /exports/software/busco/busco-v2.0.1/BUSCO_plot.py -wd /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/run_busco_$SPECIES && mv /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/busco_figure.png /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_$SPECIES.png
+/data/projects/lross_ssa/scripts/faFilter -minSize=1000 /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && module load blast ; PATH=$PATH:/exports/software/hmmer/hmmer-3.1b1/bin/ ; python /exports/software/busco/busco-v2.0.1/BUSCO.py -f -i /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta -o busco_$SPECIES -l /exports/software/busco/arthropoda -m tran -c 16 -sp fly && mkdir /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && mv /data/projects/lross_ssa/analyses/temp_out/trinity/run_busco_$SPECIES /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries && python /exports/software/busco/busco-v2.0.1/BUSCO_plot.py -wd /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/run_busco_$SPECIES && mv /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_summaries/run_busco_$SPECIES/busco_figure.png /data/projects/lross_ssa/analyses/$SPECIES/busco/busco_$SPECIES.png
 
 
 ########## blast ##########
@@ -75,7 +75,7 @@ blastn -task megablast -query /data/projects/lross_ssa/analyses/$SPECIES/trinity
 
 ######### indexing #########
 
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && mv temp_out/trinity/$SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/kallisto/
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && mv /data/projects/lross_ssa/analyses/temp_out/trinity/$SPECIES\_indexed.idx /data/projects/lross_ssa/analyses/$SPECIES/kallisto/
 
 
 
