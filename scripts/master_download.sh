@@ -30,10 +30,10 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
  
-qsub $script nasonia_giraulti SRR2773799 female single
-qsub $script nasonia_giraulti SRR2773798 female single
-#qsub $script nasonia_giraulti SRR2773797 female single
-#qsub $script nasonia_giraulti SRR2773796 female single
+#qsub $script nasonia_giraulti SRR2773799 female single
+#qsub $script nasonia_giraulti SRR2773798 female single
+qsub $script nasonia_giraulti SRR2773797 female single
+qsub $script nasonia_giraulti SRR2773796 female single
 #qsub $script nasonia_giraulti SRR2773795 female single
 #qsub $script nasonia_giraulti SRR2773794 female single
 #qsub $script nasonia_giraulti SRR1566030 female single
@@ -49,8 +49,7 @@ qsub $script nasonia_giraulti SRR2773798 female single
 #qsub $script nasonia_giraulti SRR1566026 male single
 #qsub $script nasonia_giraulti SRR1566025 male single
 
-#qsub $script frankliniella_occidentalis SRR1826956 female paired
-#qsub $script frankliniella_occidentalis SRR1826954 male paired
+
 
 
 
