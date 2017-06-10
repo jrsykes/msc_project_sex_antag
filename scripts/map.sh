@@ -22,7 +22,7 @@ fi
 
 if [ $MODE == 'single' ]
 	then
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/tetranychus_urticae/kallisto/$SRR -b 100 /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/tetranychus_urticae/trimmomatic/$SEX/$SRR\_2.fq
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 --single -l 200 -s 20 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR.fq
 
 fi
 
