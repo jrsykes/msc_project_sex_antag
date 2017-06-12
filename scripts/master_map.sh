@@ -4,11 +4,12 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/map.sh
 
 ##### IMPORTANT. REMMEBER TO LOOK AT SEQUENCE LENGTH IN MASTER_MAP.SH BFORE RUNNING ########### for most this should be -l 100 and -s 20
 
-qsub $script agrilus_planipennis SRR1791267 female paired
-qsub $script agrilus_planipennis SRR1791269 male paired
+qsub $script ericerus_pela SRR1027689 female single
+qsub $script ericerus_pela SRR1027688 female single
+qsub $script ericerus_pela SRR1027687 female single
+qsub $script ericerus_pela SRR1027692 male single
 
-#qsub $script 
-#qsub $script 
+
 #qsub $script 
 #qsub $script 
 #qsub $script 
