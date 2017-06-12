@@ -4,8 +4,8 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/trim.sh
 
  1 =species. 2 = SRR, 3 = sex, 4 = paired/single end mode
 
-qsub $script anoplophora_glabripennis SRR1799851 female paired
-qsub $script anoplophora_glabripennis SRR1799852 male paired
+qsub $script nasonia_giraulti SRR2773799 female single
+#qsub $script anoplophora_glabripennis SRR1799852 male paired
 
 #qsub $script tetranychus_urticae SRR4043745
 #qsub $script tetranychus_urticae SRR4043744
