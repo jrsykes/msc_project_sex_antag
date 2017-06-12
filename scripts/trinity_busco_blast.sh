@@ -21,23 +21,26 @@ mkdir /scratch/jsykes/trinity_$SPECIES
 #SCRATCH=/scratch/jsykes/
 #-outdir=$SCRATCH/trinity  
 
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
+#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
+#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/temp_out/trinity/
 
 if [ $MODE == 'paired' ]
 then
-mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
-LEFT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1); do readlink -f $file ;done | paste -sd "," -)
 
-mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
-RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2); do readlink -f $file ;done | paste -sd "," -)
+LEFT=$(for file in $(ls /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq); do readlink -f $file; done | paste -sd "," - )
+echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+RIGHT=$(for file in $(ls /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*2.fq); do readlink -f $file; done | paste -sd "," - )
+echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 
-#echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
-#echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+#mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
+#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
+#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
+#LEFT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1); do readlink -f $file ;done | paste -sd "," -)
+#
+#mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
+#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
+#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2
+#RIGHT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_2); do readlink -f $file ;done | paste -sd "," -)
 
 
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy ; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --left $LEFT --right $RIGHT --CPU 32 --max_memory 100G --output /scratch/jsykes/trinity_$SPECIES && rsync -a /scratch/jsykes/trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/
@@ -47,10 +50,13 @@ fi
 if [ $MODE == 'single' ]
 then
 
-mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
-ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
-INPUT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined); do readlink -f $file ;done | paste -sd "," -)
+INPUT=$(for file in $(ls /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq); do readlink -f $file; done | paste -sd "," - )
+echo $INPUT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+
+#mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
+#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
+#ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
+#INPUT=$(for file in $(ls -1 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined); do readlink -f $file ;done | paste -sd "," -)
 
 
 PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --single $INPUT --CPU 32 --max_memory 100G --output /scratch/jsykes/trinity_$SPECIES && rsync -a /scratch/jsykes/trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/
@@ -58,7 +64,7 @@ PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy; /exports/software/trin
 fi
 
 
-rm -rf /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combine*
+#rm -rf /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combine*
 rm -rf /scratch/jsykes/trinity_$SPECIES
 
 ###### filter and busco ##########
