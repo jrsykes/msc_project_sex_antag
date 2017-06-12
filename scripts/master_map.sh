@@ -4,10 +4,9 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/map.sh
 
 ##### IMPORTANT. REMMEBER TO LOOK AT SEQUENCE LENGTH IN MASTER_MAP.SH BFORE RUNNING ########### for most this should be -l 100 and -s 20
 
-qsub $script nasonia_giraulti SRR2773798 female single 
+qsub $script anoplophora_glabripennis SRR1799851 female paired
+qsub $script anoplophora_glabripennis SRR1799852 male paired
 
-
-#qsub $script 
 #qsub $script 
 #qsub $script 
 #qsub $script 
