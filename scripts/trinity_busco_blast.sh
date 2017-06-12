@@ -16,7 +16,7 @@
 SPECIES=$1
 MODE=$2
 
-alias rsyncdel='mv'
+#alias rsyncdel=
 mkdir /scratch/jsykes/trinity_$SPECIES
 #SCRATCH=/scratch/jsykes/
 #-outdir=$SCRATCH/trinity  
@@ -28,9 +28,9 @@ if [ $MODE == 'paired' ]
 then
 
 LEFT=$(for file in $(ls /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq); do readlink -f $file; done | paste -sd "," - )
-echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+#echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 RIGHT=$(for file in $(ls /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*2.fq); do readlink -f $file; done | paste -sd "," - )
-echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+#echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 
 #mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
 #ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined_1
@@ -51,7 +51,7 @@ if [ $MODE == 'single' ]
 then
 
 INPUT=$(for file in $(ls /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq); do readlink -f $file; done | paste -sd "," - )
-echo $INPUT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
+#echo $INPUT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 
 #mkdir /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
 #ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/combined
