@@ -2,17 +2,17 @@
 
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/trim.sh
 
-### 1 =species. 2 = SRR, 3 = sex, 4 = paired/single end mode
+ 1 =species. 2 = SRR, 3 = sex, 4 = paired/single end mode
 
-qsub $script leptinotarsa_decemlineata SRR1827566 male paired
-qsub $script leptinotarsa_decemlineata SRR1827565 female paired
+qsub $script anoplophora_glabripennis SRR1799851 female paired
+qsub $script anoplophora_glabripennis SRR1799852 male paired
 
-#qsub $script nasonia_giraulti SRR2773796 female single
-#qsub $script nasonia_giraulti SRR2773795 female single
-#qsub $script nasonia_giraulti SRR2773794 female single
-#qsub $script nasonia_giraulti SRR1566030 female single
-#qsub $script nasonia_giraulti SRR1566029 female single
-#qsub $script nasonia_giraulti SRR1566028 female single
+#qsub $script tetranychus_urticae SRR4043745
+#qsub $script tetranychus_urticae SRR4043744
+#qsub $script tetranychus_urticae SRR4043743
+#qsub $script tetranychus_urticae SRR4043742
+#qsub $script tetranychus_urticae SRR4043741
+#qsub $script tetranychus_urticae SRR4043740
 
 #qsub $script nasonia_giraulti SRR1566024 female single
 #qsub $script nasonia_giraulti SRR1566023 female single
