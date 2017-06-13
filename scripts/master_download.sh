@@ -30,8 +30,8 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
  
-qsub $script dendroctonus_ponderosae SRR867160 female paired
-qsub $script dendroctonus_ponderosae SRR867161 female paired
+#qsub $script dendroctonus_ponderosae SRR867160 female paired
+#qsub $script dendroctonus_ponderosae SRR867161 female paired
 #qsub $script dendroctonus_ponderosae SRR867162 female paired
 #qsub $script dendroctonus_ponderosae SRR867179 female paired
 #qsub $script dendroctonus_ponderosae SRR867176 female paired
@@ -55,10 +55,10 @@ qsub $script dendroctonus_ponderosae SRR867161 female paired
 #qsub $script amblyomma_americanum SRR1027485 male paired 
 #qsub $script amblyomma_americanum SRR1027483 male paired 
 #
-#qsub $script tropilaelaps_mercedesae SRR4294671 female paired 
-#qsub $script tropilaelaps_mercedesae SRR4294670 female paired 
-#qsub $script tropilaelaps_mercedesae SRR4294669 male paired 
-#qsub $script tropilaelaps_mercedesae SRR4294668 male paired 
+qsub $script tropilaelaps_mercedesae SRR4294671 female paired 
+qsub $script tropilaelaps_mercedesae SRR4294670 female paired 
+qsub $script tropilaelaps_mercedesae SRR4294669 male paired 
+qsub $script tropilaelaps_mercedesae SRR4294668 male paired 
 
 
 
