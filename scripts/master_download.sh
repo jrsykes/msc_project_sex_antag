@@ -32,10 +32,10 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_q
  
 #qsub $script rhizoglyphus_robini SRR3934324 female single
 #qsub $script rhizoglyphus_robini SRR3934325 female single
-qsub $script rhizoglyphus_robini SRR3934332 female single
-qsub $script rhizoglyphus_robini SRR3934333 female single
-#qsub $script rhizoglyphus_robini SRR3934334 female single
-#qsub $script rhizoglyphus_robini SRR3934335 female single
+#qsub $script rhizoglyphus_robini SRR3934332 female single
+#qsub $script rhizoglyphus_robini SRR3934333 female single
+qsub $script rhizoglyphus_robini SRR3934334 female single
+qsub $script rhizoglyphus_robini SRR3934335 female single
 #qsub $script rhizoglyphus_robini SRR3934336 female single
 #qsub $script rhizoglyphus_robini SRR3934337 female single
 #qsub $script rhizoglyphus_robini SRR946953 female paired
