@@ -63,7 +63,7 @@ blastn -task megablast -query /data/projects/lross_ssa/analyses/$SPECIES/trinity
 
 ######### indexing #########
 
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $SPECIES.idx /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && mv /data/projects/lross_ssa/analyses/temp_out/trinity/$SPECIES.idx /data/projects/lross_ssa/analyses/$SPECIES/kallisto/
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i paired_$SPECIES.idx /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && mv /data/projects/lross_ssa/analyses/temp_out/trinity/paired_$SPECIES.idx /data/projects/lross_ssa/analyses/$SPECIES/kallisto/
 
 
 elif [ $MODE == 'single' ]
@@ -99,7 +99,7 @@ blastn -task megablast -query /data/projects/lross_ssa/analyses/$SPECIES/trinity
 
 ######### indexing #########
 
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i $SPECIES.idx /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && mv /data/projects/lross_ssa/analyses/temp_out/trinity/$SPECIES.idx /data/projects/lross_ssa/analyses/$SPECIES/kallisto/
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto index -i single_$SPECIES.idx /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && mv /data/projects/lross_ssa/analyses/temp_out/trinity/single_$SPECIES.idx /data/projects/lross_ssa/analyses/$SPECIES/kallisto/
 
 
 elif [ $MODE == 'both']
