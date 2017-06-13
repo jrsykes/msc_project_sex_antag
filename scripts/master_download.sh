@@ -30,13 +30,8 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
  
-#qsub $script tetranychus_urticae SRR1582619 female paired
-#qsub $script tetranychus_urticae SRR1582618 female paired
-qsub $script tetranychus_urticae SRR1582616 female paired
-qsub $script tetranychus_urticae SRR1582617 female paired
-#
-#qsub $script dendroctonus_ponderosae SRR867160 female paired
-#qsub $script dendroctonus_ponderosae SRR867161 female paired
+qsub $script dendroctonus_ponderosae SRR867160 female paired
+qsub $script dendroctonus_ponderosae SRR867161 female paired
 #qsub $script dendroctonus_ponderosae SRR867162 female paired
 #qsub $script dendroctonus_ponderosae SRR867179 female paired
 #qsub $script dendroctonus_ponderosae SRR867176 female paired
