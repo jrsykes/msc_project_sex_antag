@@ -5,6 +5,11 @@
 #$ -l h_vmem=40G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/map
 
+########## 	EDIT THE READ_LENGTH AND SD VARIABLES IF RUNNING IN SINGLE END MODE ################
+READ_LENGTH=100
+SD=20
+################################################################################################
+
 SPECIES=$1
 SRR=$2
 SEX=$3
@@ -22,7 +27,7 @@ fi
 
 if [ $MODE == 'single' ]
 	then
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 --single -l 100 -s 20 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR.fq
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 --single -l $READ_LENGTH -s $SD /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR.fq
 
 fi
 
