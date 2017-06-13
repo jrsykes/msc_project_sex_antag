@@ -5,7 +5,7 @@
 #$ -l h_vmem=40G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/map
 
-########## 	EDIT THE READ_LENGTH AND SD VARIABLES IF RUNNING IN SINGLE END MODE ################
+########## 	EDIT THE READ_LENGTH AND SD VARIABLES IF RUNNING IN SINGLE END OR BOTH MODE ################
 READ_LENGTH=100
 SD=20
 ################################################################################################
@@ -15,19 +15,30 @@ SRR=$2
 SEX=$3
 MODE=$4
 
+mkdir /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR
 
 if [ $MODE == 'paired' ]
 then
 
-mkdir /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_2.fq
-rm -rf /data/projects/lross_ssa/analyses/tetranychus_urticae/kallisto/combined
-rm -f $INPUT
-fi
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_2.fq
 
-if [ $MODE == 'single' ]
+
+elif [ $MODE == 'single' ]
 	then
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES\_indexed.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 --single -l $READ_LENGTH -s $SD /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR.fq
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SPECIES.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 --single -l $READ_LENGTH -s $SD /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_s.fq
+
+
+elif [ $MODE == 'both' ]
+then
+
+####### paired
+
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/paired_$SPECIES.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_2.fq
+
+######## single
+
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/single_$SPECIES.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 --single -l $READ_LENGTH -s $SD /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_s.fq
+
 
 fi
 
@@ -39,15 +50,8 @@ touch /data/projects/lross_ssa/analyses/$SPECIES/kallisto/kal_results/hiseq_info
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/kallisto/kal_results/kal_files
 ln -s /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR /data/projects/lross_ssa/analyses/$SPECIES/kallisto/kal_results/kal_files/$SRR
 
-#### manually set up sleauth files ####
 
-#mkdir /data/projects/lross_ssa/analyses/tetranychus_urticae/kallisto/kal_results
-#touch /data/projects/lross_ssa/analyses/tetranychus_urticae/kallisto/kal_results/hiseq_info.txt
-
-#mkdir /data/projects/lross_ssa/analyses/tetranychus_urticae/kallisto/kal_results/kal_files
-#ln -s /data/projects/lross_ssa/analyses/tetranychus_urticae/kallisto/SRR* /data/projects/lross_ssa/analyses/tetranychus_urticae/kallisto/kal_results/kal_files/
-
-#### combined method. Did not work as only produced one abundance file instead of one per individal.
+#### combined method. To be used for libraries composed of mutiple runs.
 
 #mkdir /data/projects/lross_ssa/analyses/$SPECIES/kallisto/combined
 #ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*1.fq /data/projects/lross_ssa/analyses/$SPECIES/kallisto/combined
@@ -61,3 +65,19 @@ ln -s /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR /data/projects/lr
 #ln -s /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*.fq /data/projects/lross_ssa/analyses/temp_out/map/
 
 #echo $INPUT > /data/projects/lross_ssa/analyses/temp_out/map/INPUT.txt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
