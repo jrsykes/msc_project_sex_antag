@@ -16,18 +16,22 @@ SEX=$3
 MODE=$4
 
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR
+mkdir /scratch/jsykes/map_$SRR
 
 if [ $MODE == 'paired' ]
 then
 
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/paired_$SPECIES.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_2.fq
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/paired_$SPECIES.idx -o /scratch/jsykes/map_$SRR/$SRR -b 100 /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_1.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_2.fq
 
 
 elif [ $MODE == 'single' ]
 	then
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/single_$SPECIES.idx -o /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR -b 100 --single -l $READ_LENGTH -s $SD /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_s.fq
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/single_$SPECIES.idx -o /scratch/jsykes/map_$SRR/$SRR -b 100 --single -l $READ_LENGTH -s $SD /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_s.fq
 
 fi
+
+rsync -a /scratch/jsykes/map_$SRR/$SRR /data/projects/lross_ssa/analyses/$SPECIES/kallisto
+rm -rf /scratch/jsykes/map_$SRR
 
 ####### setting up files for sleuth #########
 
