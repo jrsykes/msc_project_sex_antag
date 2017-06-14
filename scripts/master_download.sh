@@ -42,10 +42,10 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_q
 #qsub $script dendroctonus_ponderosae SRR867441 male paired
 #qsub $script dendroctonus_ponderosae SRR867433 male paired
 #qsub $script dendroctonus_ponderosae SRR867434 male paired
-qsub $script dendroctonus_ponderosae SRR867436 male paired
-qsub $script dendroctonus_ponderosae SRR867438 male paired
-#qsub $script dendroctonus_ponderosae SRR867439 male paired
-#qsub $script dendroctonus_ponderosae SRR867440 male paired
+#qsub $script dendroctonus_ponderosae SRR867436 male paired
+#qsub $script dendroctonus_ponderosae SRR867438 male paired
+qsub $script dendroctonus_ponderosae SRR867439 male paired
+qsub $script dendroctonus_ponderosae SRR867440 male paired
 
 
 #qsub $script rhizoglyphus_robini SRR3934324 female single
