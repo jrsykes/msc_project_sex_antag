@@ -34,10 +34,10 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_q
 #qsub $script dendroctonus_ponderosae SRR867161 female paired
 #qsub $script dendroctonus_ponderosae SRR867162 female paired
 #qsub $script dendroctonus_ponderosae SRR867179 female paired
-qsub $script dendroctonus_ponderosae SRR867176 female paired
-qsub $script dendroctonus_ponderosae SRR867183 female paired
-#qsub $script dendroctonus_ponderosae SRR867186 female paired
-#qsub $script dendroctonus_ponderosae SRR867188 female paired
+#qsub $script dendroctonus_ponderosae SRR867176 female paired
+#qsub $script dendroctonus_ponderosae SRR867183 female paired
+qsub $script dendroctonus_ponderosae SRR867186 female paired
+qsub $script dendroctonus_ponderosae SRR867188 female paired
 #qsub $script dendroctonus_ponderosae SRR867432 male paired
 #qsub $script dendroctonus_ponderosae SRR867441 male paired
 #qsub $script dendroctonus_ponderosae SRR867433 male paired
