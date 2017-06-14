@@ -47,18 +47,18 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_q
 #qsub $script dendroctonus_ponderosae SRR867439 male paired
 #qsub $script dendroctonus_ponderosae SRR867440 male paired
 #
-#qsub $script amblyomma_americanum SRR1027770 female paired  
-#qsub $script amblyomma_americanum SRR1027769 male paired 
-#qsub $script amblyomma_americanum SRR1027768 male paired 
-#qsub $script amblyomma_americanum SRR1027767 male paired 
-#qsub $script amblyomma_americanum SRR1027763 male paired 
-#qsub $script amblyomma_americanum SRR1027485 male paired 
-#qsub $script amblyomma_americanum SRR1027483 male paired 
+qsub $script amblyomma_americanum SRR1027770 female paired  
+qsub $script amblyomma_americanum SRR1027769 male paired 
+qsub $script amblyomma_americanum SRR1027768 male paired 
+qsub $script amblyomma_americanum SRR1027767 male paired 
+qsub $script amblyomma_americanum SRR1027763 male paired 
+qsub $script amblyomma_americanum SRR1027485 male paired 
+qsub $script amblyomma_americanum SRR1027483 male paired 
 #
-qsub $script tropilaelaps_mercedesae SRR4294671 female paired 
-qsub $script tropilaelaps_mercedesae SRR4294670 female paired 
-qsub $script tropilaelaps_mercedesae SRR4294669 male paired 
-qsub $script tropilaelaps_mercedesae SRR4294668 male paired 
+#qsub $script tropilaelaps_mercedesae SRR4294671 female paired 
+#qsub $script tropilaelaps_mercedesae SRR4294670 female paired 
+#qsub $script tropilaelaps_mercedesae SRR4294669 male paired 
+#qsub $script tropilaelaps_mercedesae SRR4294668 male paired 
 
 
 
