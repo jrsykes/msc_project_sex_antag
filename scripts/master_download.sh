@@ -30,26 +30,8 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
  
-#qsub $script dendroctonus_ponderosae SRR867160 female paired
-#qsub $script dendroctonus_ponderosae SRR867161 female paired
-#qsub $script dendroctonus_ponderosae SRR867162 female paired
-#qsub $script dendroctonus_ponderosae SRR867179 female paired
-#qsub $script dendroctonus_ponderosae SRR867176 female paired
-#qsub $script dendroctonus_ponderosae SRR867183 female paired
-#qsub $script dendroctonus_ponderosae SRR867186 female paired
-#qsub $script dendroctonus_ponderosae SRR867188 female paired
-#qsub $script dendroctonus_ponderosae SRR867432 male paired
-#qsub $script dendroctonus_ponderosae SRR867441 male paired
-#qsub $script dendroctonus_ponderosae SRR867433 male paired
-#qsub $script dendroctonus_ponderosae SRR867434 male paired
-#qsub $script dendroctonus_ponderosae SRR867436 male paired
-#qsub $script dendroctonus_ponderosae SRR867438 male paired
-qsub $script dendroctonus_ponderosae SRR867439 male paired
-qsub $script dendroctonus_ponderosae SRR867440 male paired
-
-
-#qsub $script rhizoglyphus_robini SRR3934324 female single
-#qsub $script rhizoglyphus_robini SRR3934325 female single
+qsub $script rhizoglyphus_robini SRR3934324 female single
+qsub $script rhizoglyphus_robini SRR3934325 female single
 #qsub $script rhizoglyphus_robini SRR3934332 female single
 #qsub $script rhizoglyphus_robini SRR3934333 female single
 #qsub $script rhizoglyphus_robini SRR3934334 female single
