@@ -5,20 +5,21 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/trim.sh
  1 =species. 2 = SRR, 3 = sex, 4 = paired/single end mode
 
 
-qsub $script tetranychus_urticae SRR1582619 female paired
-qsub $script tetranychus_urticae SRR1582618 female paired
-qsub $script tetranychus_urticae SRR1582616 female paired
-qsub $script tetranychus_urticae SRR1582617 female paired
+qsub $script tropilaelaps_mercedesae SRR4294671 female paired
+qsub $script tropilaelaps_mercedesae SRR4294670 female paired
+qsub $script tropilaelaps_mercedesae SRR4294669 male paired
+qsub $script tropilaelaps_mercedesae SRR4294668 male paired
 
 
 
-#qsub $script rhizoglyphus_robini SRR3934334 female single
-#qsub $script rhizoglyphus_robini SRR3934335 female single
-#qsub $script rhizoglyphus_robini SRR3934336 female single
-#qsub $script rhizoglyphus_robini SRR3934337 female single
-#qsub $script rhizoglyphus_robini SRR946953 female paired
-#qsub $script rhizoglyphus_robini SRR3934326 male single
-#qsub $script rhizoglyphus_robini SRR3934327 male single
+qsub $script amblyomma_americanum SRR1027770 female paired  
+qsub $script amblyomma_americanum SRR1027769 male paired 
+qsub $script amblyomma_americanum SRR1027768 male paired 
+qsub $script amblyomma_americanum SRR1027767 male paired 
+qsub $script amblyomma_americanum SRR1027763 male paired 
+qsub $script amblyomma_americanum SRR1027485 male paired 
+qsub $script amblyomma_americanum SRR1027483 male paired 
+
 #qsub $script rhizoglyphus_robini SRR3934328 male single
 #qsub $script rhizoglyphus_robini SRR3934329 male single
 #qsub $script rhizoglyphus_robini SRR3934330 male single
