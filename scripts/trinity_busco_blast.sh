@@ -140,6 +140,6 @@ blastn -task megablast -query /data/projects/lross_ssa/analyses/$SPECIES/trinity
 
 fi
 
-rm -rf /scratch/jsykes/trinity_$SPECIES
+rm -rf /scratch/jsykes/*trinity_$SPECIES
 
 
