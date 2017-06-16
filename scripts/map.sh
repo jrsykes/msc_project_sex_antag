@@ -15,6 +15,7 @@ SRR=$2
 SEX=$3
 MODE=$4
 
+
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/kallisto/$SRR
 mkdir /scratch/jsykes/map_$SRR
 

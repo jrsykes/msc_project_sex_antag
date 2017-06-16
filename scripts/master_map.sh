@@ -4,22 +4,23 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/map.sh
 
 ##### IMPORTANT. REMMEBER TO LOOK AT SEQUENCE LENGTH IN MASTER_MAP.SH BFORE RUNNING ########### for most this should be -l 100 and -s 20
 
-qsub $script anoplophora_glabripennis SRR1799851 female paired
-qsub $script anoplophora_glabripennis SRR1799852 male paired
 
-
-#qsub $script tetranychus_urticae SRR4043741 male paired
-#qsub $script tetranychus_urticae SRR4043740 male paired
-#qsub $script tetranychus_urticae SRR4043739 male paired
-#qsub $script tetranychus_urticae SRR4043738 male paired
-#qsub $script tetranychus_urticae SRR1582619 female paired
-#qsub $script tetranychus_urticae SRR1582618 female paired
-#qsub $script tetranychus_urticae SRR1582616 female paired
-#qsub $script tetranychus_urticae SRR1582617 female paired
-
-#qsub $script 
-#qsub $script 
-#qsub $script 
-#qsub $script 
-#qsub $script 
-#qsub $script 
+qsub $script rhizoglyphus_robini SRR3934324 female single
+qsub $script rhizoglyphus_robini SRR3934325 female single
+qsub $script rhizoglyphus_robini SRR3934332 female single
+qsub $script rhizoglyphus_robini SRR3934333 female single
+qsub $script rhizoglyphus_robini SRR3934334 female single
+qsub $script rhizoglyphus_robini SRR3934335 female single
+qsub $script rhizoglyphus_robini SRR3934336 female single
+qsub $script rhizoglyphus_robini SRR3934337 female single
+qsub $script rhizoglyphus_robini SRR946953 female paired
+qsub $script rhizoglyphus_robini SRR3934326 male single
+qsub $script rhizoglyphus_robini SRR3934327 male single
+qsub $script rhizoglyphus_robini SRR3934328 male single
+qsub $script rhizoglyphus_robini SRR3934329 male single
+qsub $script rhizoglyphus_robini SRR3934330 male single
+qsub $script rhizoglyphus_robini SRR3934331 male single
+qsub $script rhizoglyphus_robini SRR949074 male paired
+qsub $script rhizoglyphus_robini SRR949075 male paired
+qsub $script rhizoglyphus_robini SRR3934338 male single
+qsub $script rhizoglyphus_robini SRR3934339 male single
