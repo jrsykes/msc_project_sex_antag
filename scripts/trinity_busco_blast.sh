@@ -2,7 +2,7 @@
 #$ -S /bin/bash
 #$ -q main.q
 #$ -pe smp 32
-#$ -l h_vmem=100G
+#$ -l h_vmem=200G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/trinity
 
 #parallel -j4 '/exports/software/readbasecount/readbasecount.py {}' ::: *.fq
