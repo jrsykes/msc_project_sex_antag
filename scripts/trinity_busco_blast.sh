@@ -2,7 +2,7 @@
 #$ -S /bin/bash
 #$ -q main.q
 #$ -pe smp 32
-#$ -l h_vmem=200G
+#$ -l h_vmem=100G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/trinity
 
 #parallel -j4 '/exports/software/readbasecount/readbasecount.py {}' ::: *.fq
@@ -11,7 +11,7 @@ SPECIES=$1
 MODE=$2
 
 
-mkdir /scratch/jsykes/trinity_$SPECIES
+mkdir /scratch/jsykes/trinity_$SPECIESo
 
 
 if [ $MODE == 'paired' ]
