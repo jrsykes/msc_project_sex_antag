@@ -101,45 +101,27 @@ expression$MeanF<-(expression$SRR5377267+expression$SRR5377268)/2
 
 head(expression)
 
-
-
-
-
-
-
-
-
 expression_values$MeanF<-(expression_values$SRR5377267+expression_values$SRR5377268)/2
 
-pdf("scatterplot.pdf", width=14, height=7)
-
-plot(log2(expression_values$SRR5377265),log2(expression_values$MeanF),xlab="Male biased transcripts", ylab="Female biased transcripts", col = ifelse(expression_values$SRR5377265<2*expression_values$MeanF & expression_values$MeanF<2*expression_values$SRR5377265,'black','orange'))
-
-dev.off()
 
 library(ggplot2)
 
-col1<-rgb(1,0,0,0,names='col1')
-col1<-rgb(0,1,0,0,names='col1')
 
 pdf("scatterplot2.pdf", width=14, height=7)
 expression_values$col<-"grey"
-expression_values[!is.na(expression_values$SRR5377265) & expression_values$SRR5377265 < 2*expression_values$MeanF,"col"] <- "tomato"
-expression_values[!is.na(expression_values$MeanF) & expression_values$MeanF < 2*expression_values$SRR5377265,"col"] <- "turquoise"
-expression_values[!is.na(expression_values$SRR5377265) & expression_values$SRR5377265 < 1.5*expression_values$MeanF,"col"] <- "turquoise3"
-expression_values[!is.na(expression_values$MeanF) & expression_values$MeanF < 1.5*expression_values$SRR5377265,"col"] <- "tomato3"
 
+expression_values[(expression_values$SRR5377265) & expression_values$SRR5377265 > 2*expression_values$MeanF,"col"] <- "steelblue"
+expression_values[(expression_values$MeanF) & expression_values$MeanF > 2*expression_values$SRR5377265,"col"] <- "steelblue"
+expression_values[(expression_values$SRR5377265) & expression_values$SRR5377265 > 4*expression_values$MeanF,"col"] <- "tan1"
+expression_values[(expression_values$MeanF) & expression_values$MeanF > 4*expression_values$SRR5377265,"col"] <- "tan1"
+expression_values[(expression_values$SRR5377265) & expression_values$SRR5377265 > 6*expression_values$MeanF,"col"] <- "forestgreen"
+expression_values[(expression_values$MeanF) & expression_values$MeanF > 6*expression_values$SRR5377265,"col"] <- "forestgreen"
+expression_values[(expression_values$SRR5377265) & expression_values$SRR5377265 > 8*expression_values$MeanF,"col"] <- "darkmagenta"
+expression_values[(expression_values$MeanF) & expression_values$MeanF > 8*expression_values$SRR5377265,"col"] <- "darkmagenta"
 
-ggplot(expression_values, aes(x = log2(expression_values$SRR5377265), y = log2(expression_values$MeanF), color = col)) + geom_point() + xlab("Male") + ylab("Female") + scale_color_identity()
+ggplot(expression_values, aes(x = log2(expression_values$SRR5377265), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Male TPM") + ylab("Log2 Female TPM") + scale_color_identity() + xlim(0,20) + geom_smooth(method='lm')
 
 dev.off()
-
-
-
-
-
-
-
 
 
 #Merge the tables with TPM and p/q values.
@@ -190,10 +172,6 @@ dim(lim65)
 
 ncontigs<-(subset(newexpression, SRR5377265>0 | SRR5377267>0 | SRR5377268>0))
 dim (ncontigs)
-
-
-
-
 
 
 
