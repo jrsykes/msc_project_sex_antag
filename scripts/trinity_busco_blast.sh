@@ -1,8 +1,8 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -q main.q
-#$ -pe smp 32
-#$ -l h_vmem=150G
+#$ -pe smp 24
+#$ -l h_vmem=10G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/trinity
 
 #parallel -j4 '/exports/software/readbasecount/readbasecount.py {}' ::: *.fq
