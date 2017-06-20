@@ -23,7 +23,7 @@ mkdir /data/projects/lross_ssa/analyses/$species/kallisto
 mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic
 mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/male
 mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
-exit
+
 
 ## one = species, two = SRR, three = sex, four = paired or single end mode
 
