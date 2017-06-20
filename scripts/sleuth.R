@@ -1,5 +1,12 @@
+run_accession condition
+SRR4294671 female
+SRR4294670 female
+SRR4294669 male
+SRR4294668 male
+
 
 ######## Ensure that you are in the directory, in bash, that contains the kal_files directory and hiseq_info.txt file.
+### Remember to edit hiseq_info.txt as per the example above, beofre running sleuth script
 
 library("sleuth")
 
@@ -7,7 +14,7 @@ library("sleuth")
 ### Set directory of Kallisto Results
 
 ########## 		REMEMBER TO EDIT SPECIES NAME.    #########
-base_dir <-"/data/projects/lross_ssa/analyses/varroa_destructor/kallisto/kal_results"
+base_dir <-"/data/projects/lross_ssa/analyses/tropilaelaps_mercedesae/kallisto/kal_results"
 
 sample_id <- dir(file.path(base_dir, "kal_files"))
 
@@ -57,20 +64,20 @@ write.table(SummaryKallisto_table, file = "KallistoSummary.txt")
 ######## in the section of the below line of code, “perl -pe 's{ }{++$n % 6 ? $& : "\n"}ge'” , 6=2n samples. This should be adjusted accordingly.
 ### IMPORTANT ###
 
-cat KallistoSummary.txt | cut -d " " -f 2,5 | grep -v sample | perl -pi -e 's/\n/ /gi' | perl -pe 's{ }{++$n % 6 ? $& : "\n"}ge' | cut -d " " -f 1,2,4,6,8,10,12,14,16 > Kallisto_TPM_table.txt
+cat KallistoSummary.txt | cut -d " " -f 2,5 | grep -v sample | perl -pi -e 's/\n/ /gi' | perl -pe 's{ }{++$n % 8 ? $& : "\n"}ge' | cut -d " " -f 1,2,4,6,8,10,12,14,16 > Kallisto_TPM_table.txt
 
  ####The header of this table has been deleted. Add a header with: 
 
  ####### 	IMPORTANT  ######
  # change the relevent SRR values
 
-sed -i $'1 i\\Transcript SRR5377265 SRR5377267 SRR5377268\n' Kallisto_TPM_table.txt
+sed -i $'1 i\\Transcript SRR4294671 SRR4294670 SRR4294669 SRR4294668\n' Kallisto_TPM_table.txt
 
 ###Create a count table with:
 
-cat KallistoSummary.txt | cut -d " " -f 2,4 | grep -v sample | perl -pi -e 's/\n/ /gi' | perl -pe 's{ }{++$n % 6 ? $& : "\n"}ge' | cut -d " " -f 1,2,4,6,8,10,12,14,16 > Kallisto_ESTcounts_table.txt
+cat KallistoSummary.txt | cut -d " " -f 2,4 | grep -v sample | perl -pi -e 's/\n/ /gi' | perl -pe 's{ }{++$n % 8 ? $& : "\n"}ge' | cut -d " " -f 1,2,4,6,8,10,12,14,16 > Kallisto_ESTcounts_table.txt
 
-sed -i $'1 i\\Transcript SRR5377265 SRR5377267 SRR5377268\n' Kallisto_ESTcounts_table.txt
+sed -i $'1 i\\Transcript SRR4294671 SRR4294670 SRR4294669 SRR4294668\n' Kallisto_ESTcounts_table.txt
 
 
 ######## Back to R
@@ -79,100 +86,107 @@ Review the distribution of expression values from each library
 
 expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
 
-pdf("Boxplot1.pdf", width=14, height=7)
-
-expression_values<- (expression[,c(2,3,4)])
+### the number of numeric values the the following line should equal n and begin with 2
+expression_values<- (expression[,c(2,3,4,5)])
 
 expression_values<-expression_values[!rowSums(expression_values <1),]
+
+pdf("Boxplot1.pdf", width=14, height=7)
 
 boxplot(log2(expression_values), outline=F, notch=F, col=rainbow(8), ylab="Log2(TPM)")
 
 dev.off()
 
 ####### correlations
-
+sink('correlations.txt')
 cor(expression_values, method="pearson")
+sink()
 
 # Add an additional column to the TPM table with an average of the two female TPM columns:
 
-expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
+#expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
 
-expression$MeanF<-(expression$SRR5377267+expression$SRR5377268)/2
+#expression$MeanF<-(expression$SRR4416254+expression$SRR4416252+expression$SRR4416250)/3
+#expression$MeanM<-(expression$SRR4416255+expression$SRR4416253+expression$SRR4416251)/3
 
-head(expression)
+#head(expression)
 
-expression_values$MeanF<-(expression_values$SRR5377267+expression_values$SRR5377268)/2
-
+expression_values$MeanF<-(expression_values$SRR4294671+expression_values$SRR4294670)/2
+expression_values$MeanM<-(expression_values$SRR4294669+expression_values$SRR4294668)/2
 
 library(ggplot2)
 
 
-pdf("scatterplot2.pdf", width=14, height=7)
+
 expression_values$col<-"grey"
+expression_values[(expression_values$MeanM) & expression_values$MeanM > 2*expression_values$MeanF,"col"] <- "steelblue"
+expression_values[(expression_values$MeanF) & expression_values$MeanF > 2*expression_values$MeanM,"col"] <- "steelblue"
+expression_values[(expression_values$MeanM) & expression_values$MeanM > 4*expression_values$MeanF,"col"] <- "tan1"
+expression_values[(expression_values$MeanF) & expression_values$MeanF > 4*expression_values$MeanM,"col"] <- "tan1"
+expression_values[(expression_values$MeanM) & expression_values$MeanM > 6*expression_values$MeanF,"col"] <- "forestgreen"
+expression_values[(expression_values$MeanF) & expression_values$MeanF > 6*expression_values$MeanM,"col"] <- "forestgreen"
+expression_values[(expression_values$MeanM) & expression_values$MeanM > 8*expression_values$MeanF,"col"] <- "darkmagenta"
+expression_values[(expression_values$MeanF) & expression_values$MeanF > 8*expression_values$MeanM,"col"] <- "darkmagenta"
 
-expression_values[(expression_values$SRR5377265) & expression_values$SRR5377265 > 2*expression_values$MeanF,"col"] <- "steelblue"
-expression_values[(expression_values$MeanF) & expression_values$MeanF > 2*expression_values$SRR5377265,"col"] <- "steelblue"
-expression_values[(expression_values$SRR5377265) & expression_values$SRR5377265 > 4*expression_values$MeanF,"col"] <- "tan1"
-expression_values[(expression_values$MeanF) & expression_values$MeanF > 4*expression_values$SRR5377265,"col"] <- "tan1"
-expression_values[(expression_values$SRR5377265) & expression_values$SRR5377265 > 6*expression_values$MeanF,"col"] <- "forestgreen"
-expression_values[(expression_values$MeanF) & expression_values$MeanF > 6*expression_values$SRR5377265,"col"] <- "forestgreen"
-expression_values[(expression_values$SRR5377265) & expression_values$SRR5377265 > 8*expression_values$MeanF,"col"] <- "darkmagenta"
-expression_values[(expression_values$MeanF) & expression_values$MeanF > 8*expression_values$SRR5377265,"col"] <- "darkmagenta"
-
-ggplot(expression_values, aes(x = log2(expression_values$SRR5377265), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Male TPM") + ylab("Log2 Female TPM") + scale_color_identity() + xlim(0,20) + geom_smooth(method='lm')
-
+pdf("scatterplot1.pdf", width=14, height=7)
+ggplot(expression_values, aes(x = log2(expression_values$MeanM), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Male TPM") + ylab("Log2 Female TPM") + scale_color_identity()
 dev.off()
 
+pdf("scatterplot2.pdf", width=14, height=7)
+ggplot(expression_values, aes(x = log2(expression_values$MeanM), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Male TPM") + ylab("Log2 Female TPM") + scale_color_identity() + geom_smooth(method='lm')
+dev.off()
 
 #Merge the tables with TPM and p/q values.
 
-detranscripts<-read.table("DEgenes", head=T, sep=" ")
+#detranscripts<-read.table("DEgenes", head=T, sep=" ")
 
-newexpression<-merge(expression, detranscripts, by.x="Transcript", by.y="target_id")[,c(1,2,3,4,5,6,7,8)]
+#newexpression<-merge(expression, detranscripts, by.x="Transcript", by.y="target_id")[,c(1,2,3,4,5,6,7,8)]
 
 #Remove all reads with TPM<1
 
-newexpression<-subset(newexpression, SRR5377265>1 | SRR5377267>1 | SRR5377268>1 | MeanF>1)
+#newexpression<-subset(newexpression, SRR4416255>1 | SRR4416253>1 | SRR4416251>1 | SRR4416254>1 SRR4416252>1 | SRR4416250>1)
 
 #create subsets
 
 ## n sex biased gene per individual using 2xtranscription level threshold.
 
-biasSRR5377265_cutoff<-(subset(newexpression, SRR5377265>(2*MeanF)))
-
-biasSRR5377267_cutoff<-(subset(newexpression, SRR5377267>(2*SRR5377265)))
-
-biasSRR5377268_cutoff<-(subset(newexpression, SRR5377268>(2*SRR5377265)))
+SRR4294671_cutoff<-(subset(expression_values, SRR4294671>(2*expression_values$MeanM)))
+SRR4294670_cutoff<-(subset(expression_values, SRR4294670>(2*expression_values$MeanM)))
+SRR4294669_cutoff<-(subset(expression_values, SRR4294669>(2*expression_values$MeanF)))
+SRR4294668_cutoff<-(subset(expression_values, SRR4294668>(2*expression_values$MeanF)))
 
 ## n sex biased gene per library using q<0.05 threshold. Only use this is n>6 if at all.
 
-#fbias_qval<-(subset(newexpression,qval<0.05 | MeanF>(2*SRR5377265)))
+#fbias_qval<-(subset(newexpression,qval<0.05 | MeanF>(2*MeanM)))
 
-#mbias_qval<-(subset(newexpression,qval<0.05 | SRR5377265>(2*MeanF))) 
+#mbias_qval<-(subset(newexpression,qval<0.05 | MeanM>(2*MeanF))) 
 
 ##### n biased contigs
 
-dim (biasSRR5377265_cutoff) 
+dim (SRR4294671_cutoff)
+dim (SRR4294670_cutoff) 
+dim (SRR4294669_cutoff)
+dim (SRR4294668_cutoff)
 
-dim (biasSRR5377267_cutoff) 
 
-dim (biasSRR5377268_cutoff)
 
-##n genes transcribed by SRR5377265 individual
+##n sex limited genes
 
-lim65<-(subset(expression, SRR5377265>0 | MeanF<1))
+male_limited<-(subset(expression_values, SRR4294669>4 & SRR4294671<4 & SRR4294670<4))
+dim (male_limited)
+male_limited<-(subset(expression_values, SRR4294668>4 & SRR4294671<4 & SRR4294670<4))
+dim (male_limited)
 
- 
 
-dim(lim65)
-
+female_limited<-(subset(expression_values, SRR4294671>4 & SRR4294669<4 & SRR4294668<4))
+dim (female_limited)
+female_limited<-(subset(expression_values, SRR4294670>4 & SRR4294669<4 & SRR4294668<4))
+dim (female_limited)
  
 
 ##n genes transcribed by the species
 
-ncontigs<-(subset(newexpression, SRR5377265>0 | SRR5377267>0 | SRR5377268>0))
-dim (ncontigs)
-
+tail(expression_values)
 
 
 
