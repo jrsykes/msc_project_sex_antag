@@ -5,7 +5,7 @@
 #$ -l h_vmem=10G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/trinity
 
-#parallel -j4 '/exports/software/readbasecount/readbasecount.py {}' ::: *.fq
+#parallel -j4 '/exports/software/readbasecount/readbasecount.py {}' ::: *.fa
 
 SPECIES=$1
 MODE=$2
@@ -24,7 +24,7 @@ echo $LEFT > /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 RIGHT=$(for file in $(ls /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/male/*_2.fq /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/female/*_2.fq); do readlink -f $file; done | paste -sd "," - )
 echo $RIGHT >> /data/projects/lross_ssa/analyses/temp_out/trinity/path.txt
 
-PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy ; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --seqType fq --left $LEFT --right $RIGHT --CPU 32 --max_memory 100G --output /scratch/jsykes/paired_trinity_$SPECIES && rsync -a /scratch/jsykes/paired_trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/paired_assembly.fa
+PATH=$PATH:/exports/software/bowtie/bowtie2-2.3.2-legacy ; /exports/software/trinity/trinityrnaseq-Trinity-v2.4.0/Trinity --SS_lib_type RF --seqType fq --left $LEFT --right $RIGHT --CPU 32 --max_memory 100G --output /scratch/jsykes/paired_trinity_$SPECIES && rsync -a /scratch/jsykes/paired_trinity_$SPECIES/Trinity.fasta /data/projects/lross_ssa/analyses/$SPECIES/trinity/paired_assembly.fa
 
 ###### filter < 1000 bp ##########
 

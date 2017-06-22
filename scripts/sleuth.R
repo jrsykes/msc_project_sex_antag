@@ -87,11 +87,16 @@ Review the distribution of expression values from each library
 expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
 
 ### the number of numeric values the the following line should equal n and begin with 2
-expression_values<- (expression[,c(2,3,4,5)])
+#expression_values<- (expression[,c(2,3,4)])
 
-expression_values<-expression_values[!rowSums(expression_values <1),]
+#Includes only reads with a TPM>1 in at least one individual per sex
+expression_values<-(subset(expression_values, SRR5377265>1))
+expression_values<-(subset(expression_values, SRR5377267>1 & SRR5377268>1))
 
-pdf("Boxplot1.pdf", width=14, height=7)
+#keep only reads that have a TPM>1 in every library
+#expression_values<-expression_values[!rowSums(expression_values <1),]
+
+pdf("distribution_boxplot.pdf", width=14, height=7)
 
 boxplot(log2(expression_values), outline=F, notch=F, col=rainbow(8), ylab="Log2(TPM)")
 
@@ -102,20 +107,12 @@ sink('correlations.txt')
 cor(expression_values, method="pearson")
 sink()
 
-# Add an additional column to the TPM table with an average of the two female TPM columns:
+#### Add columns to expression_vaues with mean female TPM and mean male TPM
+expression_values$MeanM<-(expression_values$SRR5377265)
+expression_values$MeanF<-(expression_values$SRR5377267+expression_values$SRR5377268)/2
 
-#expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
-
-#expression$MeanF<-(expression$SRR4416254+expression$SRR4416252+expression$SRR4416250)/3
-#expression$MeanM<-(expression$SRR4416255+expression$SRR4416253+expression$SRR4416251)/3
-
-#head(expression)
-
-expression_values$MeanF<-(expression_values$SRR4294671+expression_values$SRR4294670)/2
-expression_values$MeanM<-(expression_values$SRR4294669+expression_values$SRR4294668)/2
-
+### plot mean sex biased expression
 library(ggplot2)
-
 
 
 expression_values$col<-"grey"
@@ -129,64 +126,46 @@ expression_values[(expression_values$MeanM) & expression_values$MeanM > 8*expres
 expression_values[(expression_values$MeanF) & expression_values$MeanF > 8*expression_values$MeanM,"col"] <- "darkmagenta"
 
 pdf("scatterplot1.pdf", width=14, height=7)
-ggplot(expression_values, aes(x = log2(expression_values$MeanM), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Male TPM") + ylab("Log2 Female TPM") + scale_color_identity()
+ggplot(expression_values, aes(x = log2(expression_values$MeanM), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Mean Male TPM") + ylab("Log2 Mean Female TPM") + scale_color_identity() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
 dev.off()
 
 pdf("scatterplot2.pdf", width=14, height=7)
-ggplot(expression_values, aes(x = log2(expression_values$MeanM), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Male TPM") + ylab("Log2 Female TPM") + scale_color_identity() + geom_smooth(method='lm')
+ggplot(expression_values, aes(x = log2(expression_values$MeanM), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Mean Male TPM") + ylab("Log2 Mean Female TPM") + scale_color_identity() + geom_smooth(method='lm') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
 dev.off()
 
-#Merge the tables with TPM and p/q values.
 
-#detranscripts<-read.table("DEgenes", head=T, sep=" ")
-
-#newexpression<-merge(expression, detranscripts, by.x="Transcript", by.y="target_id")[,c(1,2,3,4,5,6,7,8)]
-
-#Remove all reads with TPM<1
-
-#newexpression<-subset(newexpression, SRR4416255>1 | SRR4416253>1 | SRR4416251>1 | SRR4416254>1 SRR4416252>1 | SRR4416250>1)
+## n genes transcribed by the species
+dim(expression_values)
 
 #create subsets
 
 ## n sex biased gene per individual using 2xtranscription level threshold.
 
-SRR4294671_cutoff<-(subset(expression_values, SRR4294671>(2*expression_values$MeanM)))
-SRR4294670_cutoff<-(subset(expression_values, SRR4294670>(2*expression_values$MeanM)))
-SRR4294669_cutoff<-(subset(expression_values, SRR4294669>(2*expression_values$MeanF)))
-SRR4294668_cutoff<-(subset(expression_values, SRR4294668>(2*expression_values$MeanF)))
-
-## n sex biased gene per library using q<0.05 threshold. Only use this is n>6 if at all.
-
-#fbias_qval<-(subset(newexpression,qval<0.05 | MeanF>(2*MeanM)))
-
-#mbias_qval<-(subset(newexpression,qval<0.05 | MeanM>(2*MeanF))) 
+SRR5377265_cutoff<-(subset(expression_values, SRR5377265>(2*expression_values$MeanF)))
+SRR5377267_cutoff<-(subset(expression_values, SRR5377267>(2*expression_values$MeanM)))
+SRR5377268_cutoff<-(subset(expression_values, SRR5377268>(2*expression_values$MeanM)))
 
 ##### n biased contigs
 
-dim (SRR4294671_cutoff)
-dim (SRR4294670_cutoff) 
-dim (SRR4294669_cutoff)
-dim (SRR4294668_cutoff)
+dim (SRR5377265_cutoff)
+dim (SRR5377267_cutoff) 
+dim (SRR5377268_cutoff)
 
 
 
 ##n sex limited genes
 
-male_limited<-(subset(expression_values, SRR4294669>4 & SRR4294671<4 & SRR4294670<4))
-dim (male_limited)
-male_limited<-(subset(expression_values, SRR4294668>4 & SRR4294671<4 & SRR4294670<4))
+male_limited<-(subset(expression_values, SRR5377265>4 & MeanF<4))
 dim (male_limited)
 
 
-female_limited<-(subset(expression_values, SRR4294671>4 & SRR4294669<4 & SRR4294668<4))
+female_limited<-(subset(expression_values, SRR5377267>4 & MeanM<4))
 dim (female_limited)
-female_limited<-(subset(expression_values, SRR4294670>4 & SRR4294669<4 & SRR4294668<4))
+female_limited<-(subset(expression_values, SRR5377268>4 & MeanM<4))
 dim (female_limited)
- 
 
-##n genes transcribed by the species
 
-tail(expression_values)
+
 
 
 

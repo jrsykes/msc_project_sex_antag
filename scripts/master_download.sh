@@ -1,3 +1,10 @@
+#This script is will download the SRA libraries, run fastqc on those libraries and create the directory infrastructure for the rest of the analysis.
+#To run it, first amend the relevant lines beginning with qsub. Ensure that only two qsub lines are unhashed per run.
+#Once this is complete run the script as follows: 'bash master_download.sh <species_name>' . 
+#Once these libraries have downloaded, re-run the scrip, unhashing the next two qsub lines. 
+#Repeat this process until all libraries for this this have been downloaded.
+#IMPORTANT. Only download two libraries at a time otherwise you will slow the operation of the cluster for other users.
+#IMPORTNT. Ensure that species name is all in lower case and the space between the genus and the species is replaced with an underscore.
 
 
 species=$1
@@ -30,8 +37,8 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
  
-#qsub $script rhizoglyphus_robini SRR3934324 female single
-#qsub $script rhizoglyphus_robini SRR3934325 female single
+qsub $script rhizoglyphus_robini SRR3934324 female single
+qsub $script rhizoglyphus_robini SRR3934325 female single
 #qsub $script rhizoglyphus_robini SRR3934332 female single
 #qsub $script rhizoglyphus_robini SRR3934333 female single
 #qsub $script rhizoglyphus_robini SRR3934334 female single
