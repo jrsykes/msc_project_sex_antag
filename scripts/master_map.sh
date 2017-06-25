@@ -13,8 +13,8 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/map.sh
 
 ### 1 =species. 2 = SRR, 3 = sex, 4 = paired/single end mode
 
-qsub $script planococcus_ficus SRR1 female paired
-qsub $script planococcus_ficus SRR2 male paired
+qsub $script planococcus_citric SRR1 female paired
+qsub $script planococcus_citric SRR2 male paired
 #qsub $script 
 #qsub $script 
 #qsub $script 
