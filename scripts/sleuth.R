@@ -87,11 +87,11 @@ Review the distribution of expression values from each library
 expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
 
 ### the number of numeric values the the following line should equal n and begin with 2
-#expression_values<- (expression[,c(2,3,4)])
+expression_values<- (expression[,c(2,3,4)])
 
 #Includes only reads with a TPM>1 in at least one individual per sex
-expression_values<-(subset(expression_values, SRR5377265>1))
-expression_values<-(subset(expression_values, SRR5377267>1 & SRR5377268>1))
+#expression_values<-(subset(expression_values, SRR5377265>1))
+expression_values<-(subset(expression_values, SRR5377265>1 | SRR5377267>1 & SRR5377268>1))
 
 #keep only reads that have a TPM>1 in every library
 #expression_values<-expression_values[!rowSums(expression_values <1),]
