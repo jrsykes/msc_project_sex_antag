@@ -89,17 +89,16 @@ expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
 ### the number of numeric values the the following line should equal n and begin with 2
 expression_values<- (expression[,c(2,3,4)])
 
-#Includes only reads with a TPM>1 in at least one individual per sex
-#expression_values<-(subset(expression_values, SRR5377265>1))
-expression_values<-(subset(expression_values, SRR5377265>1 | SRR5377267>1 & SRR5377268>1))
+#Includes only reads with a TPM>1 in at least one individual
+expression_values<-(subset(expression_values, SRR5377265>1 | SRR5377267>1 | SRR5377268>1))
 
-#keep only reads that have a TPM>1 in every library
-#expression_values<-expression_values[!rowSums(expression_values <1),]
+#### Add columns to expression_vaues with mean female TPM and mean male TPM
+expression_values$MeanM<-(expression_values$SRR5377265)
+expression_values$MeanF<-(expression_values$SRR5377267+expression_values$SRR5377268)/2
 
+### plot ditributions
 pdf("distribution_boxplot.pdf", width=14, height=7)
-
 boxplot(log2(expression_values), outline=F, notch=F, col=rainbow(8), ylab="Log2(TPM)")
-
 dev.off()
 
 ####### correlations
@@ -107,9 +106,6 @@ sink('correlations.txt')
 cor(expression_values, method="pearson")
 sink()
 
-#### Add columns to expression_vaues with mean female TPM and mean male TPM
-expression_values$MeanM<-(expression_values$SRR5377265)
-expression_values$MeanF<-(expression_values$SRR5377267+expression_values$SRR5377268)/2
 
 ### plot mean sex biased expression
 library(ggplot2)
@@ -129,17 +125,10 @@ pdf("scatterplot1.pdf", width=14, height=7)
 ggplot(expression_values, aes(x = log2(expression_values$MeanM), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Mean Male TPM") + ylab("Log2 Mean Female TPM") + scale_color_identity() + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
 dev.off()
 
-pdf("scatterplot2.pdf", width=14, height=7)
-ggplot(expression_values, aes(x = log2(expression_values$MeanM), y = log2(expression_values$MeanF), color = col)) + geom_point(size=0.7) + xlab("Log2 Mean Male TPM") + ylab("Log2 Mean Female TPM") + scale_color_identity() + geom_smooth(method='lm') + theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "black"))
-dev.off()
-
-
-## n genes transcribed by the species
-dim(expression_values)
 
 #create subsets
 
-## n sex biased gene per individual using 2xtranscription level threshold.
+## n sex biased transcripts per individual using 2xtranscription level threshold.
 
 SRR5377265_cutoff<-(subset(expression_values, SRR5377265>(2*expression_values$MeanF)))
 SRR5377267_cutoff<-(subset(expression_values, SRR5377267>(2*expression_values$MeanM)))
@@ -152,21 +141,28 @@ dim (SRR5377267_cutoff)
 dim (SRR5377268_cutoff)
 
 
-
 ##n sex limited genes
-
-male_limited<-(subset(expression_values, SRR5377265>4 & MeanF<4))
+male_limited<-(subset(expression_values, SRR5377265>1 & MeanF<1))
 dim (male_limited)
 
-
-female_limited<-(subset(expression_values, SRR5377267>4 & MeanM<4))
-dim (female_limited)
-female_limited<-(subset(expression_values, SRR5377268>4 & MeanM<4))
+female_limited<-(subset(expression_values, SRR5377267>1 & MeanM<1))
 dim (female_limited)
 
+female_limited<-(subset(expression_values, SRR5377268>1 & MeanM<1))
+dim (female_limited)
 
 
+## n genes transcribed by the per library
+expression_values<- (expression[,c(2,3,4)])
+one<-(subset(expression_values, SRR5377265>1))
+dim(one)
 
+expression_values<- (expression[,c(2,3,4)])
+two<-(subset(expression_values, SRR5377267>1))
+dim(two)
 
+expression_values<- (expression[,c(2,3,4)])
+three<-(subset(expression_values, SRR5377268>1))
+dim(three)
 
 

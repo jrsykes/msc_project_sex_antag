@@ -6,8 +6,8 @@
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/map
 
 ########## 	EDIT THE READ_LENGTH AND SD VARIABLES IF RUNNING IN SINGLE END OR BOTH MODE ################
-READ_LENGTH=100
-SD=20
+READ_LENGTH=165
+SD=92.8
 ################################################################################################
 
 SPECIES=$1
