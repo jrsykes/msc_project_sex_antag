@@ -1,3 +1,4 @@
+#### format of hiseq_info.txt file:
 run_accession condition
 SRR4294671 female
 SRR4294670 female

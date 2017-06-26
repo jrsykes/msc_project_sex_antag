@@ -10,7 +10,7 @@ for dir in kallisto/SRR*; do echo $dir; cut -f1,5 $dir/abundance.tsv | grep -v t
 
 #Ensure that the arguments trinity/*, blast/* and -c *.cov in the following line are correct.
 # Creating a blobDB  
-/exports/software/blobtools/blobtools create -i trinity/paired_assembly_1k.fa -t blast/dendroctonus_ponderosae_blastn_paired_sorted.out  -o blobplot -c kallisto/SRR867160.cov -c kallisto/SRR867161.cov -c kallisto/SRR867162.cov -c kallisto/SRR867179.cov -c kallisto/SRR867176.cov -c kallisto/SRR867183.cov -c kallisto/SRR867186.cov -c kallisto/SRR867188.cov -c kallisto/SRR867432.cov -c kallisto/SRR867441.cov -c kallisto/SRR867433.cov -c kallisto/SRR867434.cov -c kallisto/SRR867436.cov -c kallisto/SRR867438.cov -c kallisto/SRR867439.cov -c kallisto/SRR867440.cov #-c kallisto/SRR1566026.cov -c kallisto/SRR1566025.cov 
+/exports/software/blobtools/blobtools create -i trinity/Trinity1k.fasta -t blast/nasonia_giraulti_blastn_sorted.out  -o blobplot -c kallisto/SRR2773799.cov -c kallisto/SRR2773798.cov -c kallisto/SRR2773797.cov -c kallisto/SRR2773796.cov -c kallisto/SRR2773795.cov -c kallisto/SRR2773794.cov -c kallisto/SRR1566030.cov -c kallisto/SRR1566029.cov -c kallisto/SRR1566028.cov -c kallisto/SRR1566024.cov -c kallisto/SRR1566023.cov -c kallisto/SRR1566022.cov -c kallisto/SRR1566033.cov -c kallisto/SRR1566032.cov -c kallisto/SRR1566031.cov -c kallisto/SRR1566027.cov -c kallisto/SRR1566026.cov -c kallisto/SRR1566025.cov 
 
 # Extracting a "view" table
 /exports/software/blobtools/blobtools view -i blobplot.blobDB.json --rank all --hits
@@ -30,37 +30,37 @@ deactivate
 
 # Getting a distribution of kingdoms/phyla
 # Kingdom
-grep -v '^#' blobplot.blobDB.table.txt | cut -f22 | sort | uniq -c | less ### superkingdom.t.
+grep -v '^#' blobplot.blobDB.table.txt | cut -f24 | sort | uniq -c | less ### superkingdom.t.
 # Phylum
-grep -v '^#' blobplot.blobDB.table.txt | cut -f26 | sort | uniq -c | less ### phylum.t.
+grep -v '^#' blobplot.blobDB.table.txt | cut -f28 | sort | uniq -c | less ### phylum.t.
 
 # Look at those that were annotated as Viruses 
-awk '$22=="Viruses"' blobplot.blobDB.table.txt | less
-awk '$26=="Streptophyta"' blobplot.blobDB.table.txt | less
+awk '$24=="Viruses"' blobplot.blobDB.table.txt | less
+awk '$28=="Streptophyta"' blobplot.blobDB.table.txt | less
 
 
 # Filtering abundance before SLEUTH
-awk '$22=="Viruses"' blobplot.blobDB.table.txt | cut -f1 > viruses.contig_ids.txt
-awk '$26=="Streptophyta"' blobplot.blobDB.table.txt | cut -f1 > streptophyta.contig_ids.txt
+awk '$24=="Viruses"' blobplot.blobDB.table.txt | cut -f1 > viruses.contig_ids.txt
+awk '$28=="Streptophyta"' blobplot.blobDB.table.txt | cut -f1 > streptophyta.contig_ids.txt
 
-a=SRR867160
-b=SRR867161
-c=SRR867162
-d=SRR867179
-e=SRR867176
-f=SRR867183
-g=SRR867186
-h=SRR867188
-i=SRR867432
-j=SRR867441
-k=SRR867433
-l=SRR867434
-m=SRR867436
-n=SRR867438
-o=SRR867439
-p=SRR867440
-#q=SRR1566026
-#r=SRR1566025
+a=SRR2773799
+b=SRR2773798
+c=SRR2773797
+d=SRR2773796
+e=SRR2773795
+f=SRR2773794
+g=SRR1566030
+h=SRR1566029
+i=SRR1566028
+j=SRR1566024
+k=SRR1566023
+l=SRR1566022
+m=SRR1566033
+n=SRR1566032
+o=SRR1566031
+p=SRR1566027
+q=SRR1566026
+r=SRR1566025
 
 grep -v -wFf viruses.contig_ids.txt ../kallisto/$a/abundance.tsv | grep -v -wFf streptophyta.contig_ids.txt > ../kallisto/$a/abundance.filtered.tsv
 grep -v -wFf viruses.contig_ids.txt ../kallisto/$b/abundance.tsv | grep -v -wFf streptophyta.contig_ids.txt > ../kallisto/$b/abundance.filtered.tsv
@@ -78,8 +78,8 @@ grep -v -wFf viruses.contig_ids.txt ../kallisto/$m/abundance.tsv | grep -v -wFf 
 grep -v -wFf viruses.contig_ids.txt ../kallisto/$n/abundance.tsv | grep -v -wFf streptophyta.contig_ids.txt > ../kallisto/$n/abundance.filtered.tsv
 grep -v -wFf viruses.contig_ids.txt ../kallisto/$o/abundance.tsv | grep -v -wFf streptophyta.contig_ids.txt > ../kallisto/$o/abundance.filtered.tsv
 grep -v -wFf viruses.contig_ids.txt ../kallisto/$p/abundance.tsv | grep -v -wFf streptophyta.contig_ids.txt > ../kallisto/$p/abundance.filtered.tsv
-#grep -v -wFf viruses.contig_ids.txt ../kallisto/$q/abundance.tsv | grep -v -wFf streptophyta.contig_ids.txt > ../kallisto/$q/abundance.filtered.tsv
-#grep -v -wFf viruses.contig_ids.txt ../kallisto/$r/abundance.tsv | grep -v -wFf streptophyta.contig_ids.txt > ../kallisto/$r/abundance.filtered.tsv
+grep -v -wFf viruses.contig_ids.txt ../kallisto/$q/abundance.tsv | grep -v -wFf streptophyta.contig_ids.txt > ../kallisto/$q/abundance.filtered.tsv
+grep -v -wFf viruses.contig_ids.txt ../kallisto/$r/abundance.tsv | grep -v -wFf streptophyta.contig_ids.txt > ../kallisto/$r/abundance.filtered.tsv
 
 
 
