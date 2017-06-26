@@ -27,7 +27,7 @@ then
 
 elif [ $MODE == 'single' ]
 	then
-/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/single_$SPECIES.idx -o /scratch/jsykes/map_$SRR/$SRR -b 100 --single -l $READ_LENGTH -s $SD /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR\_s.fq
+/exports/software/kallisto/kallisto_linux-v0.43.1/kallisto quant -t 16 -i /data/projects/lross_ssa/analyses/$SPECIES/kallisto/single_$SPECIES.idx -o /scratch/jsykes/map_$SRR/$SRR -b 100 --single -l $READ_LENGTH -s $SD /data/projects/lross_ssa/analyses/$SPECIES/trimmomatic/$SEX/$SRR.fq #$SRR\_s.fq
 
 fi
 
