@@ -31,3 +31,10 @@ qsub $script nasonia_giraulti SRR1566031 male single
 qsub $script nasonia_giraulti SRR1566027 male single 
 qsub $script nasonia_giraulti SRR1566026 male single 
 qsub $script nasonia_giraulti SRR1566025 male single 
+
+qsub $script amblyomma_americanum SRR4416255 male single 
+qsub $script amblyomma_americanum SRR4416253 male single 
+qsub $script amblyomma_americanum SRR4416251 male single 
+qsub $script amblyomma_americanum SRR4416254 female single 
+qsub $script amblyomma_americanum SRR4416252 female single 
+qsub $script amblyomma_americanum SRR4416250 female single 
