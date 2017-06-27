@@ -5,7 +5,7 @@
 #Repeat this process until all libraries for this this have been downloaded.
 #IMPORTANT. Only download two libraries at a time otherwise you will slow the operation of the cluster for other users.
 #IMPORTNT. Ensure that species name is all in lower case and the space between the genus and the species is replaced with an underscore.
-
+#Once downloading is complete for all libraries of a given species, run master_trim.sh
 
 species=$1
 
@@ -36,9 +36,10 @@ mkdir /data/projects/lross_ssa/analyses/$species/trimmomatic/female
 
 script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/download_qc.sh
 
- 
-qsub $script rhizoglyphus_robini SRR3934324 female single
-qsub $script rhizoglyphus_robini SRR3934325 female single
+qsub $script tetranychus_urticae SRR4043743 female paired
+qsub $script tetranychus_urticae SRR4043742 female paired
+#qsub $script rhizoglyphus_robini SRR3934324 female single
+#qsub $script rhizoglyphus_robini SRR3934325 female single
 #qsub $script rhizoglyphus_robini SRR3934332 female single
 #qsub $script rhizoglyphus_robini SRR3934333 female single
 #qsub $script rhizoglyphus_robini SRR3934334 female single
