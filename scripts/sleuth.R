@@ -1,13 +1,18 @@
 #### format of hiseq_info.txt file:
 run_accession condition
-SRR4294671 female
-SRR4294670 female
-SRR4294669 male
-SRR4294668 male
+SRR4416255 male
+SRR4416253 male
+SRR4416251 male
+SRR4416254 female
+SRR4416252 female
+SRR4416250 female
+
+
+
 
 
 ######## Ensure that you are in the directory, in bash, that contains the kal_files directory and hiseq_info.txt file.
-### Remember to edit hiseq_info.txt as per the example above, beofre running sleuth script
+### Remember to edit hiseq_info.txt per the example above, beofre running sleuth script
 
 library("sleuth")
 
@@ -80,22 +85,22 @@ cat KallistoSummary.txt | cut -d " " -f 2,4 | grep -v sample | perl -pi -e 's/\n
 
 sed -i $'1 i\\Transcript SRR4294671 SRR4294670 SRR4294669 SRR4294668\n' Kallisto_ESTcounts_table.txt
 
-
+head Kallisto_ESTcounts_table.txt
 ######## Back to R
 
-Review the distribution of expression values from each library
+#Review the distribution of expression values from each library
 
 expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
 
-### the number of numeric values the the following line should equal n and begin with 2
-expression_values<- (expression[,c(2,3,4)])
+### the number of numerical values the the following line should equal n and begin with 2
+expression_values<- (expression[,c(2,3,4,5,6,7)])
 
 #Includes only reads with a TPM>1 in at least one individual
-expression_values<-(subset(expression_values, SRR5377265>1 | SRR5377267>1 | SRR5377268>1))
+expression_values<-(subset(expression_values, SRR4416255>1 | SRR4416253>1 | SRR4416251>1 | SRR4416254>1 | SRR4416252>1 | SRR4416250>1))
 
 #### Add columns to expression_vaues with mean female TPM and mean male TPM
-expression_values$MeanM<-(expression_values$SRR5377265)
-expression_values$MeanF<-(expression_values$SRR5377267+expression_values$SRR5377268)/2
+expression_values$MeanM<-(expression_values$SRR4416255+expression_values$SRR4416253+expression_values$SRR4416251)/3
+expression_values$MeanF<-(expression_values$SRR4416254+expression_values$SRR4416252+expression_values$SRR4416250)/3
 
 ### plot ditributions
 pdf("distribution_boxplot.pdf", width=14, height=7)
@@ -131,39 +136,53 @@ dev.off()
 
 ## n sex biased transcripts per individual using 2xtranscription level threshold.
 
-SRR5377265_cutoff<-(subset(expression_values, SRR5377265>(2*expression_values$MeanF)))
-SRR5377267_cutoff<-(subset(expression_values, SRR5377267>(2*expression_values$MeanM)))
-SRR5377268_cutoff<-(subset(expression_values, SRR5377268>(2*expression_values$MeanM)))
+SRR4416255_cutoff<-(subset(expression_values, SRR4416255>(2*expression_values$MeanF)))
+SRR4416253_cutoff<-(subset(expression_values, SRR4416253>(2*expression_values$MeanF)))
+SRR4416251_cutoff<-(subset(expression_values, SRR4416251>(2*expression_values$MeanF)))
+SRR4416254_cutoff<-(subset(expression_values, SRR4416254>(2*expression_values$MeanM)))
+SRR4416252_cutoff<-(subset(expression_values, SRR4416252>(2*expression_values$MeanM)))
+SRR4416250_cutoff<-(subset(expression_values, SRR4416250>(2*expression_values$MeanM)))
 
 ##### n biased contigs
 
-dim (SRR5377265_cutoff)
-dim (SRR5377267_cutoff) 
-dim (SRR5377268_cutoff)
-
+dim (SRR4416255_cutoff)
+dim (SRR4416253_cutoff) 
+dim (SRR4416251_cutoff)
+dim (SRR4416254_cutoff)
+dim (SRR4416252_cutoff) 
+dim (SRR4416250_cutoff)
 
 ##n sex limited genes
-male_limited<-(subset(expression_values, SRR5377265>1 & MeanF<1))
-dim (male_limited)
+SRR4416255_limited<-(subset(expression_values, SRR4416255>1 & MeanF<1))
+SRR4416253_limited<-(subset(expression_values, SRR4416253>1 & MeanF<1))
+SRR4416251_limited<-(subset(expression_values, SRR4416251>1 & MeanF<1))
+SRR4416254_limited<-(subset(expression_values, SRR4416254>1 & MeanM<1))
+SRR4416252_limited<-(subset(expression_values, SRR4416252>1 & MeanM<1))
+SRR4416250_limited<-(subset(expression_values, SRR4416250>1 & MeanM<1))
 
-female_limited<-(subset(expression_values, SRR5377267>1 & MeanM<1))
-dim (female_limited)
-
-female_limited<-(subset(expression_values, SRR5377268>1 & MeanM<1))
-dim (female_limited)
-
+dim (SRR4416255_limited)
+dim (SRR4416253_limited) 
+dim (SRR4416251_limited)
+dim (SRR4416254_limited)
+dim (SRR4416252_limited) 
+dim (SRR4416250_limited)
 
 ## n genes transcribed by the per library
-expression_values<- (expression[,c(2,3,4)])
-one<-(subset(expression_values, SRR5377265>1))
+one<-(subset(expression_values, SRR4416255>1))
 dim(one)
 
-expression_values<- (expression[,c(2,3,4)])
-two<-(subset(expression_values, SRR5377267>1))
+two<-(subset(expression_values, SRR4416253>1))
 dim(two)
 
-expression_values<- (expression[,c(2,3,4)])
-three<-(subset(expression_values, SRR5377268>1))
+three<-(subset(expression_values, SRR4416251>1))
 dim(three)
 
+four<-(subset(expression_values, SRR4416254>1))
+dim(four)
+
+five<-(subset(expression_values, SRR4416252>1))
+dim(five)
+
+six<-(subset(expression_values, SRR4416250>1))
+dim(six)
 
