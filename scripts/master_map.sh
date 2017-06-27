@@ -13,7 +13,6 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/map.sh
 
 ### 1 =species. 2 = SRR, 3 = sex, 4 = paired/single end mode
 
-qsub $script tetranychus_urticae SRR4043743 female paired
 qsub $script tetranychus_urticae SRR4043742 female paired
 #qsub $script rhizoglyphus_robini SRR3934332 female single
 #qsub $script rhizoglyphus_robini SRR3934333 female single
