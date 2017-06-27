@@ -25,9 +25,9 @@ species=$1
 #fi
 
 mkdir /data/projects/lross_ssa/raw/$species/genome
-wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/695/645/GCA_000695645.1_Pven_1.0/GCA_000695645.1_Pven_1.0_genomic.fna.gz -O /data/projects/lross_ssa/raw/$species/genome
-wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/695/645/GCA_000695645.1_Pven_1.0/GCA_000695645.1_Pven_1.0_genomic.gbff.gz -O /data/projects/lross_ssa/raw/$species/genome
-wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/695/645/GCA_000695645.1_Pven_1.0/GCA_000695645.1_Pven_1.0_genomic.gff.gz -O /data/projects/lross_ssa/raw/$species/genome
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/695/645/GCA_000695645.1_Pven_1.0/GCA_000695645.1_Pven_1.0_genomic.fna.gz -O /data/projects/lross_ssa/raw/$species/genome/$species.fa
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/695/645/GCA_000695645.1_Pven_1.0/GCA_000695645.1_Pven_1.0_genomic.gbff.gz -O /data/projects/lross_ssa/raw/$species/genome/$species.gbff
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/000/695/645/GCA_000695645.1_Pven_1.0/GCA_000695645.1_Pven_1.0_genomic.gff.gz -O /data/projects/lross_ssa/raw/$species/genome/$species.gff
 
 ###### The code below is to be used to download libraries useing the wget command. This is much faster than dowoading with the fastq-dump command used above but trinity wil only run on libraries downloaded useing the above fastq-dump command and so unless you are using another assembler such as SOAP the following code should be ignored.
 
