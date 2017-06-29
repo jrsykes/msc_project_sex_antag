@@ -1,7 +1,7 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -q main.q
-#$ -pe smp 24
+#$ -pe smp 32
 #$ -l h_vmem=100G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/trinity
 
