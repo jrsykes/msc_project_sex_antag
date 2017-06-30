@@ -19,10 +19,10 @@ script=/data/projects/lross_ssa/scripts/msc_project_sex_antag/scripts/map.sh
 #qsub $script mayetiola_destructor SRR1738672 female paired   
 #qsub $script mayetiola_destructor SRR1239356 female paired   
 #qsub $script mayetiola_destructor SRR1239354 female paired   
-sub $script planococcus_pooled SRR1 female paired  
-sub $script planococcus_pooled SRR3 female paired  
-sub $script planococcus_pooled SRR4 male paired 
-sub $script planococcus_pooled SRR2 male paired 
+qsub $script planococcus_pooled SRR1 female paired  
+qsub $script planococcus_pooled SRR3 female paired  
+qsub $script planococcus_pooled SRR4 male paired 
+qsub $script planococcus_pooled SRR2 male paired 
 #qsub $script 
 #qsub $script 
 #qsub $script 
