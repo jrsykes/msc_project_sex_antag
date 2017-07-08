@@ -104,7 +104,7 @@ expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
 expression_values<- (expression[,c(2,3,4,5)])
 
 #Includes only reads with a TPM>1 in at least one individual
-expression_values<-(subset(expression_values, SRR1 >1 & SRR3 >1 | SRR4 >1 & SRR2))
+expression_values<-(subset(expression_values, SRR1 >1 & SRR3 >1 | SRR4 >1 & SRR2 >1))
 
 ### plot ditributions
 pdf("distribution_boxplot.pdf", width=14, height=7)
@@ -177,8 +177,8 @@ dim (SRR2_cutoff)
 ##n sex limited genes
 SRR1_limited<-(subset(expression_values, SRR1>1 & MeanM<1))
 SRR3_limited<-(subset(expression_values, SRR3>1 & MeanM<1))
-SRR4_limited<-(subset(expression_values, SRR4>1 & MeanM<1))
-SRR2_limited<-(subset(expression_values, SRR2>1 & MeanM<1))
+SRR4_limited<-(subset(expression_values, SRR4>1 & MeanF<1))
+SRR2_limited<-(subset(expression_values, SRR2>1 & MeanF<1))
 #SRR1239356_limited<-(subset(expression_values, SRR1239356>1 & MeanM<1))
 #SRR1239354_limited<-(subset(expression_values, SRR1239354>1 & MeanM<1))
 #SRR1184537_limited<-(subset(expression_values, SRR1184537>1 & MeanF<1))
