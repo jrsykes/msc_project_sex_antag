@@ -9,7 +9,7 @@ SPECIES=frankliniella_occidentalis
 SRR1=SRR1791267
 SRR2=SRR1791269
 
-/exports/software/gfold/gfold.V1.1.4/gfold diff -s1 /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR1/bowtie.bam -s2 /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR2/bowtie.bam -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta.transdecoder.bed -o /data/projects/lross_ssa/analyses/$SPECIES/gfold
+/exports/software/gfold/gfold.V1.1.4/gfold diff -s1 /data/projects/lross_ssa/analyses/$SPECIES/gfold/SRR1826954.read_cnt -s2 /data/projects/lross_ssa/analyses/$SPECIES/gfold/SRR1826956.read_cnt -annf BED -ann /data/projects/lross_ssa/analyses/frankliniella_occidentalis/gfold/Trinity1k.fasta.transdecoder.gfold.bed -o /data/projects/lross_ssa/analyses/$SPECIES/gfold
 
 
 #SPECIES=agrilus_planipennis
