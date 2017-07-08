@@ -5,7 +5,7 @@
 #$ -l h_vmem=40G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/gfold
 
-SPECIES=frankliniella_occidentalis/
+SPECIES=frankliniella_occidentalis
 SRR1=SRR1791267
 SRR2=SRR1791269
 
