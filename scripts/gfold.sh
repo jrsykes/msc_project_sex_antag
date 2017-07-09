@@ -1,15 +1,15 @@
 #!/bin/bash
 #$ -S /bin/bash
 #$ -q main.q
-#$ -pe smp 4
+#$ -pe smp 16
 #$ -l h_vmem=40G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/gfold
 
 SPECIES=frankliniella_occidentalis
-SRR1=SRR1791267
-SRR2=SRR1791269
+SRR1=SRR1826954
+SRR2=SRR1826956
 
-/exports/software/gfold/gfold.V1.1.4/gfold diff -s1 /data/projects/lross_ssa/analyses/$SPECIES/gfold/SRR1826954.read_cnt -s2 /data/projects/lross_ssa/analyses/$SPECIES/gfold/SRR1826956.read_cnt -annf BED -ann /data/projects/lross_ssa/analyses/frankliniella_occidentalis/gfold/Trinity1k.fasta.transdecoder.gfold.bed -o /data/projects/lross_ssa/analyses/$SPECIES/gfold
+/exports/software/gfold/gfold.V1.1.4/gfold diff -s1 /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR1.read_cnt -s2 /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR2.read_cnt -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/gfold/Trinity1k.fasta.transdecoder.gfold.bed -o /data/projects/lross_ssa/analyses/$SPECIES/gfold/gfold_out
 
 
 #SPECIES=agrilus_planipennis
