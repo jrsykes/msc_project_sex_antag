@@ -5,6 +5,7 @@
 #$ -l h_vmem=40G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/gfold
 
+LD_LIBRARY_PATH="/exports/libraries/gsl/1.16/lib/:"$LD_LIBRARY_PATH
 
 #SPECIES=agrilus_planipennis
 #SRR1=$SRR1
