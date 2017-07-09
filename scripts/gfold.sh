@@ -7,9 +7,9 @@
 
 LD_LIBRARY_PATH="/exports/libraries/gsl/1.16/lib/:"$LD_LIBRARY_PATH
 
-SPECIES=bemisia_tabaci
-SRR1=SRR5086009
-SRR2=SRR5086010
+SPECIES=$1
+SRR1=$2
+SRR2=$3
 
 ## Identification of likley protien-coding regions in transcripts
 
