@@ -72,9 +72,11 @@ SPECIES=planococcus_citric
 SRR1=SRR1
 SRR2=SRR2
 
+tail -n +2 /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta.transdecoder.bed | cut -f1,2,3,4,5,6 > /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed
+
 # for creating read count file
-+path /exports/libraries/gsl-1.15/; samtools view /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR1/bowtie.bam | /exports/software/gfold/gfold.V1.1.4/gfold count -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed -tag stdin -o /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR1.read_cnt
-+path /exports/libraries/gsl-1.15/; samtools view /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR2/bowtie.bam | /exports/software/gfold/gfold.V1.1.4/gfold count -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed -tag stdin -o /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR2.read_cnt
+/exports/software/samtools/samtools-1.3.1/samtools view /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR1/bowtie.bam | /exports/software/gfold/gfold.V1.1.4/gfold count -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed -tag stdin -o /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR1.read_cnt
+/exports/software/samtools/samtools-1.3.1/samtools view /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR2/bowtie.bam | /exports/software/gfold/gfold.V1.1.4/gfold count -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed -tag stdin -o /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR2.read_cnt
 
 #for creating a BED file you can feed into gfold count you have to run :
 
@@ -86,9 +88,11 @@ SPECIES=planococcus_ficus
 SRR1=SRR3
 SRR2=SRR4
 
+tail -n +2 /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta.transdecoder.bed | cut -f1,2,3,4,5,6 > /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed
+
 # for creating read count file
-+path /exports/libraries/gsl-1.15/; samtools view /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR1/bowtie.bam | /exports/software/gfold/gfold.V1.1.4/gfold count -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed -tag stdin -o /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR1.read_cnt
-+path /exports/libraries/gsl-1.15/; samtools view /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR2/bowtie.bam | /exports/software/gfold/gfold.V1.1.4/gfold count -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed -tag stdin -o /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR2.read_cnt
+/exports/software/samtools/samtools-1.3.1/samtools view /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR1/bowtie.bam | /exports/software/gfold/gfold.V1.1.4/gfold count -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed -tag stdin -o /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR1.read_cnt
+/exports/software/samtools/samtools-1.3.1/samtools view /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR2/bowtie.bam | /exports/software/gfold/gfold.V1.1.4/gfold count -annf BED -ann /data/projects/lross_ssa/analyses/$SPECIES/trinity/test.bed -tag stdin -o /data/projects/lross_ssa/analyses/$SPECIES/gfold/$SRR2.read_cnt
 
 #for creating a BED file you can feed into gfold count you have to run :
 
