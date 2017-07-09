@@ -7,8 +7,8 @@
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/gfold
 
 #SPECIES=agrilus_planipennis
-#SRR1=$SRR1
-#SRR2=$SRR2
+#SRR1=SRR1791267
+#SRR2=SRR1791269
 
 #mkdir /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir
 #mkdir /data/projects/lross_ssa/analyses/$SPECIES/rsem_outdir/$SRR1
