@@ -1,7 +1,7 @@
  #!/bin/bash
 #$ -S /bin/bash
 #$ -q main.q
-#$ -pe smp 8
+#$ -pe smp 16
 #$ -l h_vmem=40G
 #$ -wd /data/projects/lross_ssa/analyses/temp_out/gfold
 
@@ -13,9 +13,10 @@ SRR2=$3
 
 ## Identification of likley protien-coding regions in transcripts
 
-/exports/software/transdecoder/TransDecoder-3.0.1/TransDecoder.LongOrfs -t /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta --output_dir /data/projects/lross_ssa/analyses/$SPECIES/trinity
+/exports/software/transdecoder/TransDecoder-3.0.1/TransDecoder.LongOrfs -t /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta
 
-/exports/software/transdecoder/TransDecoder-3.0.1/TransDecoder.Predict -t /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta --output_dir /data/projects/lross_ssa/analyses/$SPECIES/trinity
+/exports/software/transdecoder/TransDecoder-3.0.1/TransDecoder.Predict -t /data/projects/lross_ssa/analyses/$SPECIES/trinity/Trinity1k.fasta && mv Trinity1k* /data/projects/lross_ssa/analyses/$SPECIES/trinity && rm -rf Trinity1k.fasta.transdecoder_dir
+
 
 ### Bowtie
 
