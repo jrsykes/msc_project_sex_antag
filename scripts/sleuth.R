@@ -101,10 +101,10 @@ head Kallisto_ESTcounts_table.txt
 expression<-read.table("Kallisto_TPM_table.txt", head=T, sep=" ")
 
 ### the number of numerical values the the following line should equal n and begin with 2
-expression_values<- (expression[,c(2,3,4,5)])
+expression_values<- (expression[,c(2,3,4)])
 
 #Includes only reads with a TPM>1 in at least one individual
-expression_values<-(subset(expression_values, SRR1 >1 & SRR3 >1 | SRR4 >1 & SRR2 >1))
+expression_values<-(subset(expression_values, SRR5377265 >exp(-7) | SRR5377267 >1 | SRSRR5377268 >1 | SRR2 >1))
 
 ### plot ditributions
 pdf("distribution_boxplot.pdf", width=14, height=7)

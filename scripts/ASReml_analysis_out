@@ -1,0 +1,477 @@
+m16.asreml<-asreml(log(tpm)~sex, random=~at(SexDeterm):sex:species, rcov=~units:at(SSD), data=dat, workspace=1.9e+10)
+ASReml: Thu Jul 20 22:06:07 2017
+
+     LogLik         S2      DF      wall     cpu
+-4602763.7913      1.00003598251  22:47:17    23.8
+-4436565.3055      1.00003598251  22:47:21     3.2
+-4284769.9333      1.00003598251  22:47:24     3.6
+-4214155.1787      1.00003598251  22:47:28     3.4
+-4210921.7838      1.00003598251  22:47:31     3.5
+-4210910.8073      1.00003598251  22:47:34     3.3
+-4210910.7963      1.00003598251  22:47:38     3.3
+-4210910.7958      1.00003598251  22:47:41     3.5
+-4210910.7958      1.00003598251  22:47:45     3.5
+
+Finished on: Thu Jul 20 22:47:46 2017
+
+LogLikelihood Converged
+> wald(m16.asreml)
+Wald tests for fixed effects
+
+Response: log(tpm)
+
+Terms added sequentially; adjusted for those above
+
+              Df Sum of Sq Wald statistic Pr(Chisq)
+(Intercept)    1   150.437        150.437    <2e-16 ***
+sex            1     0.029          0.029    0.8656
+residual (MS)        1.000
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+> summary (m16.asreml)
+$call
+asreml(fixed = log(tpm) ~ sex, random = ~at(SexDeterm):sex:species,
+    rcov = ~units:at(SSD), data = dat, workspace = 1.9e+10)
+
+$loglik
+[1] -4210911
+
+$nedf
+[1] 3598251
+
+$sigma
+[1] 1
+
+$varcomp
+                                                    gamma component   std.error
+at(SexDeterm, Diplodiploid):sex:species!sex.var 0.5554509 0.5554509 0.197507334
+at(SexDeterm, Haplodiploid):sex:species!sex.var 0.6089824 0.6089824 0.237539612
+at(SexDeterm, PGE):sex:species!sex.var          1.4301631 1.4301631 0.751940849
+SSD_female Diplodiploid!variance                3.7300683 3.7300683 0.005728805
+SSD_female Haplodiploid!variance                4.2457583 4.2457583 0.007409926
+SSD_female PGE!variance                         4.4523017 4.4523017 0.010197536
+SSD_male Diplodiploid!variance                  3.3796340 3.3796340 0.005093563
+SSD_male Haplodiploid!variance                  3.8281479 3.8281479 0.008025097
+SSD_male PGE!variance                           3.8192151 3.8192151 0.008798178
+                                                   z.ratio constraint
+at(SexDeterm, Diplodiploid):sex:species!sex.var   2.812305   Positive
+at(SexDeterm, Haplodiploid):sex:species!sex.var   2.563709   Positive
+at(SexDeterm, PGE):sex:species!sex.var            1.901962   Positive
+SSD_female Diplodiploid!variance                651.107518   Positive
+SSD_female Haplodiploid!variance                572.982548   Positive
+SSD_female PGE!variance                         436.605657   Positive
+SSD_male Diplodiploid!variance                  663.510738   Positive
+SSD_male Haplodiploid!variance                  477.022012   Positive
+SSD_male PGE!variance                           434.091580   Positive
+
+attr(,"class")
+[1] "summary.asreml"
+
+
+#####################################################################################
+#####################################################################################
+#####################################################################################
+
+>  m17.asreml<-asreml(log(tpm)~sex, random=~at(SexDeterm):sex:SRR, rcov=~units:at(SSD), data=dat, workspace=1.9e+10)
+^C
+
+>
+> m17.asreml<-asreml(log(tpm)~sex, random=~SRR, rcov=~units:at(SSD), data=dat, workspace=1.9e+10)
+ASReml: Fri Jul 21 14:41:14 2017
+
+     LogLik         S2      DF      wall     cpu
+-4553033.8985      1.00003598251  14:44:23    20.2
+-4395232.5150      1.00003598251  14:44:26     2.3
+-4251605.7168      1.00003598251  14:44:28     2.4
+-4185436.4687      1.00003598251  14:44:31     2.4
+-4182517.6354      1.00003598251  14:44:33     2.4
+-4182507.8659      1.00003598251  14:44:35     2.3
+-4182507.8585      1.00003598251  14:44:38     2.2
+-4182507.8585      1.00003598251  14:44:40     2.5
+-4182507.8585      1.00003598251  14:44:43     2.4
+
+Finished on: Fri Jul 21 14:44:43 2017
+
+LogLikelihood Converged
+
+> wald(m17.asreml)
+Wald tests for fixed effects
+
+Response: log(tpm)
+
+Terms added sequentially; adjusted for those above
+
+              Df Sum of Sq Wald statistic Pr(Chisq)
+(Intercept)    1    346.34         346.34    <2e-16 ***
+sex            1      0.17           0.17     0.677
+residual (MS)         1.00
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+> summary(m17.asreml)
+$call
+asreml(fixed = log(tpm) ~ sex, random = ~SRR, rcov = ~units:at(SSD),
+    data = dat, workspace = 1.9e+10)
+
+$loglik
+[1] -4182508
+
+$nedf
+[1] 3598251
+
+$sigma
+[1] 1
+
+$varcomp
+                                     gamma component   std.error    z.ratio
+SRR!SRR.var                      0.9599371 0.9599371 0.124999400   7.679534
+SSD_female Diplodiploid!variance 3.7150742 3.7150742 0.005705851 651.099072
+SSD_female Haplodiploid!variance 4.0751058 4.0751058 0.007112208 572.973382
+SSD_female PGE!variance          4.4137117 4.4137117 0.010109189 436.603939
+SSD_male Diplodiploid!variance   3.3330922 3.3330922 0.005023479 663.502826
+SSD_male Haplodiploid!variance   3.7510303 3.7510303 0.007863527 477.016246
+SSD_male PGE!variance            3.7955305 3.7955305 0.008743640 434.090428
+                                 constraint
+SRR!SRR.var                        Positive
+SSD_female Diplodiploid!variance   Positive
+SSD_female Haplodiploid!variance   Positive
+SSD_female PGE!variance            Positive
+SSD_male Diplodiploid!variance     Positive
+SSD_male Haplodiploid!variance     Positive
+SSD_male PGE!variance              Positive
+
+attr(,"class")
+[1] "summary.asreml"
+
+
+#####################################################################################
+#####################################################################################
+#####################################################################################
+
+
+> summary(m10.asreml)
+$call
+asreml(fixed = log(tpm) ~ sex, random = ~at(SexDeterm):sex:target_id,
+    rcov = ~units:at(SSD), data = dat, workspace = 1.9e+10)
+
+$loglik
+[1] -3424933
+
+$nedf
+[1] 3598251
+
+$sigma
+[1] 1
+
+$varcomp
+                                                      gamma component
+at(SexDeterm, Diplodiploid):sex:target_id!sex.var 3.1562737 3.1562737
+at(SexDeterm, Haplodiploid):sex:target_id!sex.var 3.4088328 3.4088328
+at(SexDeterm, PGE):sex:target_id!sex.var          3.2960960 3.2960960
+SSD_female Diplodiploid!variance                  1.0184228 1.0184228
+SSD_female Haplodiploid!variance                  1.4203504 1.4203504
+SSD_female PGE!variance                           1.7404432 1.7404432
+SSD_male Diplodiploid!variance                    0.9805785 0.9805785
+SSD_male Haplodiploid!variance                    0.8200024 0.8200024
+SSD_male PGE!variance                             1.3972532 1.3972532
+                                                    std.error  z.ratio
+at(SexDeterm, Diplodiploid):sex:target_id!sex.var 0.007011277 450.1710
+at(SexDeterm, Haplodiploid):sex:target_id!sex.var 0.008609769 395.9262
+at(SexDeterm, PGE):sex:target_id!sex.var          0.009662982 341.1055
+SSD_female Diplodiploid!variance                  0.001908694 533.5706
+SSD_female Haplodiploid!variance                  0.003029406 468.8544
+SSD_female PGE!variance                           0.006403955 271.7763
+SSD_male Diplodiploid!variance                    0.001789016 548.1105
+SSD_male Haplodiploid!variance                    0.002366293 346.5346
+SSD_male PGE!variance                             0.005487601 254.6200
+                                                  constraint
+at(SexDeterm, Diplodiploid):sex:target_id!sex.var   Positive
+at(SexDeterm, Haplodiploid):sex:target_id!sex.var   Positive
+at(SexDeterm, PGE):sex:target_id!sex.var            Positive
+SSD_female Diplodiploid!variance                    Positive
+SSD_female Haplodiploid!variance                    Positive
+SSD_female PGE!variance                             Positive
+SSD_male Diplodiploid!variance                      Positive
+SSD_male Haplodiploid!variance                      Positive
+SSD_male PGE!variance                               Positive
+
+attr(,"class")
+[1] "summary.asreml"
+
+> wald(m10.asreml)
+Wald tests for fixed effects
+
+Response: log(tpm)
+
+Terms added sequentially; adjusted for those above
+
+              Df Sum of Sq Wald statistic Pr(Chisq)
+(Intercept)    1    381337         381337 < 2.2e-16 ***
+sex            1      1335           1335 < 2.2e-16 ***
+residual (MS)            1
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
+
+> summary (m4.asreml)
+$call
+asreml(fixed = log(tpm) ~ sex, rcov = ~units:at(SSD), data = dat,
+    workspace = 1.8e+10)
+
+$loglik
+[1] -4476064
+
+$nedf
+[1] 3598251
+
+$sigma
+[1] 1
+
+$varcomp
+                                    gamma component   std.error  z.ratio
+SSD_female Diplodiploid!variance 4.082374  4.082374 0.006288818 649.1479
+SSD_female Haplodiploid!variance 4.958400  4.958400 0.008664859 572.2424
+SSD_female PGE!variance          6.171162  6.171162 0.014368948 429.4791
+SSD_male Diplodiploid!variance   3.785396  3.785396 0.005732593 660.3287
+SSD_male Haplodiploid!variance   4.430969  4.430969 0.009289381 476.9929
+SSD_male PGE!variance            4.495016  4.495016 0.010491880 428.4281
+                                 constraint
+SSD_female Diplodiploid!variance   Positive
+SSD_female Haplodiploid!variance   Positive
+SSD_female PGE!variance            Positive
+SSD_male Diplodiploid!variance     Positive
+SSD_male Haplodiploid!variance     Positive
+SSD_male PGE!variance              Positive
+
+attr(,"class")
+[1] "summary.asreml"
+
+
+> wald (m4.asreml)
+Wald tests for fixed effects
+
+Response: log(tpm)
+
+Terms added sequentially; adjusted for those above
+
+              Df Sum of Sq Wald statistic Pr(Chisq)
+(Intercept)    1   1409767        1409767 < 2.2e-16 ***
+sex            1       210            210 < 2.2e-16 ***
+residual (MS)            1
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+#################################################################################################
+#################################################################################################
+#################################################################################################
+
+> summary(m15.asreml)
+$call
+asreml(fixed = log(tpm) ~ sex, random = ~at(SexDeterm):sex, rcov = ~units:at(SSD),
+    data = dat, workspace = 1.9e+10)
+
+$loglik
+[1] -4390625
+
+$nedf
+[1] 3598251
+
+$sigma
+[1] 1
+
+$varcomp
+                                               gamma    component   std.error
+at(SexDeterm, Diplodiploid):sex!sex.var 2.088747e-02 2.088747e-02 0.020901215
+at(SexDeterm, Haplodiploid):sex!sex.var 2.264523e-07 2.264523e-07          NA
+at(SexDeterm, PGE):sex!sex.var          1.210492e+00 1.210492e+00 1.210511633
+SSD_female Diplodiploid!variance        4.036466e+00 4.036466e+00 0.006199356
+SSD_female Haplodiploid!variance        4.920881e+00 4.920881e+00 0.008588147
+SSD_female PGE!variance                 4.881684e+00 4.881684e+00 0.011180948
+SSD_male Diplodiploid!variance          3.721750e+00 3.721750e+00 0.005609153
+SSD_male Haplodiploid!variance          4.428588e+00 4.428588e+00 0.009283763
+SSD_male PGE!variance                   3.917771e+00 3.917771e+00 0.009025181
+                                            z.ratio constraint
+at(SexDeterm, Diplodiploid):sex!sex.var   0.9993424   Positive
+at(SexDeterm, Haplodiploid):sex!sex.var          NA   Boundary
+at(SexDeterm, PGE):sex!sex.var            0.9999838   Positive
+SSD_female Diplodiploid!variance        651.1105898   Positive
+SSD_female Haplodiploid!variance        572.9851658   Positive
+SSD_female PGE!variance                 436.6073751   Positive
+SSD_male Diplodiploid!variance          663.5137526   Positive
+SSD_male Haplodiploid!variance          477.0251564   Positive
+SSD_male PGE!variance                   434.0933079   Positive
+
+attr(,"class")
+[1] "summary.asreml"
+
+> wald(m15.asreml)
+Wald tests for fixed effects
+
+Response: log(tpm)
+
+Terms added sequentially; adjusted for those above
+
+              Df Sum of Sq Wald statistic Pr(Chisq)
+(Intercept)    1    479147         479147 < 2.2e-16 ***
+sex            1      1768           1768 < 2.2e-16 ***
+residual (MS)            1
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+######################################################################################
+######################################################################################
+######################################################################################
+
+
+> m19.asreml<-asreml(log(tpm)~sex, random=~target_id, rcov=~units:at(SSD), data=dat, workspace=1.9e+10)
+ASReml: Sat Jul 22 11:38:11 2017
+
+     LogLik         S2      DF      wall     cpu
+-4192595.0111      1.00003598251  11:53:38    22.4
+-3960830.6044      1.00003598251  11:53:43     4.2
+-3690743.9415      1.00003598251  11:53:47     4.0
+-3480428.3880      1.00003598251  11:53:51     4.2
+-3424437.0964      1.00003598251  11:53:55     4.1
+-3417678.1609      1.00003598251  11:53:59     4.1
+-3417495.9718      1.00003598251  11:54:03     4.4
+-3417493.9013      1.00003598251  11:54:07     4.0
+-3417493.8288      1.00003598251  11:54:11     3.9
+-3417493.8258      1.00003598251  11:54:16     4.4
+-3417493.8256      1.00003598251  11:54:20     3.9
+-3417493.8256      1.00003598251  11:54:23     3.9
+
+Finished on: Sat Jul 22 11:54:24 2017
+
+LogLikelihood Converged
+
+> summary(m19.asreml)
+$call
+asreml(fixed = log(tpm) ~ sex, random = ~target_id, rcov = ~units:at(SSD),
+    data = dat, workspace = 1.9e+10)
+
+$loglik
+[1] -3417494
+
+$nedf
+[1] 3598251
+
+$sigma
+[1] 1
+
+$varcomp
+                                    gamma component   std.error  z.ratio
+target_id!target_id.var          2.781834  2.781834 0.005294068 525.4624
+SSD_female Diplodiploid!variance 1.552726  1.552726 0.002917007 532.3013
+SSD_female Haplodiploid!variance 1.734199  1.734199 0.003695450 469.2796
+SSD_female PGE!variance          2.493076  2.493076 0.007677074 324.7430
+SSD_male Diplodiploid!variance   1.280889  1.280889 0.002404202 532.7711
+SSD_male Haplodiploid!variance   1.414689  1.414689 0.003955771 357.6265
+SSD_male PGE!variance            1.761754  1.761754 0.005987885 294.2198
+                                 constraint
+target_id!target_id.var            Positive
+SSD_female Diplodiploid!variance   Positive
+SSD_female Haplodiploid!variance   Positive
+SSD_female PGE!variance            Positive
+SSD_male Diplodiploid!variance     Positive
+SSD_male Haplodiploid!variance     Positive
+SSD_male PGE!variance              Positive
+
+attr(,"class")
+[1] "summary.asreml"
+
+
+> wald(m19.asreml)
+Wald tests for fixed effects
+
+Response: log(tpm)
+
+Terms added sequentially; adjusted for those above
+
+              Df Sum of Sq Wald statistic Pr(Chisq)
+(Intercept)    1    226213         226213 < 2.2e-16 ***
+sex            1       846            846 < 2.2e-16 ***
+residual (MS)            1
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+######################################################################################
+######################################################################################
+######################################################################################
+
+
+> m20.asreml<-asreml(log(tpm)~sex, random=~species, rcov=~units:at(SSD), data=dat, workspace=1.9e+10)
+ASReml: Sat Jul 22 16:34:11 2017
+
+     LogLik         S2      DF      wall     cpu
+-4634702.8227      1.00003598251  17:00:16    21.4
+-4462802.2662      1.00003598251  17:00:18     2.5
+-4305342.9778      1.00003598251  17:00:21     2.6
+-4231446.2199      1.00003598251  17:00:23     2.6
+-4227911.4451      1.00003598251  17:00:26     2.7
+-4227897.8050      1.00003598251  17:00:29     2.7
+-4227897.8035      1.00003598251  17:00:31     2.6
+-4227897.8035      1.00003598251  17:00:34     2.5
+-4227897.8036      1.00003598251  17:00:36     2.6
+
+Finished on: Sat Jul 22 17:00:36 2017
+
+LogLikelihood Converged
+
+> summary(m20.asreml)
+$call
+asreml(fixed = log(tpm) ~ sex, random = ~species, rcov = ~units:at(SSD),
+    data = dat, workspace = 1.9e+10)
+
+$loglik
+[1] -4227898
+
+$nedf
+[1] 3598251
+
+$sigma
+[1] 1
+
+$varcomp
+                                     gamma component   std.error    z.ratio
+species!species.var              0.7022457 0.7022457 0.227850674   3.082043
+SSD_female Diplodiploid!variance 3.7326075 3.7326075 0.005733659 650.999177
+SSD_female Haplodiploid!variance 4.2671029 4.2671029 0.007457980 572.152621
+SSD_female PGE!variance          4.5896902 4.5896902 0.010601025 432.947792
+SSD_male Diplodiploid!variance   3.3815829 3.3815829 0.005097315 663.404758
+SSD_male Haplodiploid!variance   3.8654283 3.8654283 0.008120835 475.989041
+SSD_male PGE!variance            3.9612776 3.9612776 0.009204469 430.364585
+                                 constraint
+species!species.var                Positive
+SSD_female Diplodiploid!variance   Positive
+SSD_female Haplodiploid!variance   Positive
+SSD_female PGE!variance            Positive
+SSD_male Diplodiploid!variance     Positive
+SSD_male Haplodiploid!variance     Positive
+SSD_male PGE!variance              Positive
+
+attr(,"class")
+[1] "summary.asreml"
+
+> wald(m20.asreml)
+Wald tests for fixed effects
+
+Response: log(tpm)
+
+Terms added sequentially; adjusted for those above
+
+              Df Sum of Sq Wald statistic Pr(Chisq)
+(Intercept)    1    59.634         59.634 1.144e-14 ***
+sex            1   265.755        265.755 < 2.2e-16 ***
+residual (MS)        1.000
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

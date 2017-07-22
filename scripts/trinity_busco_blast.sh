@@ -39,6 +39,7 @@ module load blast ; PATH=$PATH:/exports/software/hmmer/hmmer-3.1b1/bin/ ; python
 
 mkdir /data/projects/lross_ssa/analyses/$SPECIES/blast 
 
+
 module load blast
 blastn -task megablast -query /data/projects/lross_ssa/analyses/$SPECIES/trinity/paired_assembly_1k.fa -db /exports/blast_db/nt -outfmt '6 qseqid staxids bitscore std' -culling_limit 5 -num_threads 64 -evalue 1e-25 -out /scratch/jsykes/blastn_paired_$SPECIES.out && mv /scratch/jsykes/blastn_paired_$SPECIES.out /data/projects/lross_ssa/analyses/$SPECIES/blast/ && sort -k 13,13 -n /data/projects/lross_ssa/analyses/$SPECIES/blast/blastn_paired_$SPECIES.out > /data/projects/lross_ssa/analyses/$SPECIES/blast/$SPECIES\_blastn_paired_sorted.out && rm -f /data/projects/lross_ssa/analyses/$SPECIES/blast/blastn_paired_$SPECIES.out && touch paired_blast_$SPECIES.done
 

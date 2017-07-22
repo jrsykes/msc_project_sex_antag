@@ -1,0 +1,8 @@
+library(ape)
+library(MCMCglmm)
+data<-read.tree("erio.tree2.tre")
+families<-makeNodeLabel(data)
+some.families<-c("Certhiidae","Paridae","Gruidae","Struthionidae")
+Nphylo<-drop.tip(bird.families,setdiff(bird.families$tip.lable, some.families))
+INphylo <- inverseA(Nphylo)
+INphylo$pedigree
