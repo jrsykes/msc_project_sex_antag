@@ -134,56 +134,60 @@ geom_point(alpha=0.005)+ ggtitle("Varroa destructor") + theme(plot.title = eleme
 annotate("text", x = -15, y = 8, label = "r == 0.65", size=7, parse = TRUE)
 
 amblyomma_americanum_expression_values$col<-"grey"
-amblyomma_americanum_expression_values[(amblyomma_americanum_expression_values$MeanM) & amblyomma_americanum_expression_values$MeanM > 8*amblyomma_americanum_expression_values$MeanF,"col"] <- "steelblue"
-amblyomma_americanum_expression_values[(amblyomma_americanum_expression_values$MeanF) & amblyomma_americanum_expression_values$MeanF > 8*amblyomma_americanum_expression_values$MeanM,"col"] <- "steelblue"
+amblyomma_americanum_expression_values[(amblyomma_americanum_expression_values$MeanM) & amblyomma_americanum_expression_values$MeanM > 3.866191*amblyomma_americanum_expression_values$MeanF,"col"] <- "steelblue"
+amblyomma_americanum_expression_values[(amblyomma_americanum_expression_values$MeanF) & amblyomma_americanum_expression_values$MeanF > 3.866191*amblyomma_americanum_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p2<-ggplot(amblyomma_americanum_expression_values, aes(x = (log(amblyomma_americanum_expression_values$MeanM)), y = (log(amblyomma_americanum_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
 geom_point(alpha=0.005) + ggtitle("Amblyomma americanum") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
-annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.12", size=7, parse = TRUE)
+annotate("text", x = -15, y = 8, label = "r == 0.44", size=7, parse = TRUE)
 
 
 tropilaelaps_mercedesae_expression_values$col<-"grey"
-tropilaelaps_mercedesae_expression_values[(tropilaelaps_mercedesae_expression_values$MeanM) & tropilaelaps_mercedesae_expression_values$MeanM > 8*tropilaelaps_mercedesae_expression_values$MeanF,"col"] <- "steelblue"
-tropilaelaps_mercedesae_expression_values[(tropilaelaps_mercedesae_expression_values$MeanF) & tropilaelaps_mercedesae_expression_values$MeanF > 8*tropilaelaps_mercedesae_expression_values$MeanM,"col"] <- "steelblue"
+tropilaelaps_mercedesae_expression_values[(tropilaelaps_mercedesae_expression_values$MeanM) & tropilaelaps_mercedesae_expression_values$MeanM > 2.597303*tropilaelaps_mercedesae_expression_values$MeanF,"col"] <- "steelblue"
+tropilaelaps_mercedesae_expression_values[(tropilaelaps_mercedesae_expression_values$MeanF) & tropilaelaps_mercedesae_expression_values$MeanF > 2.597303*tropilaelaps_mercedesae_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p3<-ggplot(tropilaelaps_mercedesae_expression_values, aes(x = (log(tropilaelaps_mercedesae_expression_values$MeanM)), y = (log(tropilaelaps_mercedesae_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Tropilaelaps mercedesae") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.29", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Tropilaelaps mercedesae") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.67", size=7, parse = TRUE)
 
 rhizoglyphus_robini_expression_values$col<-"grey"
-rhizoglyphus_robini_expression_values[(rhizoglyphus_robini_expression_values$MeanM) & rhizoglyphus_robini_expression_values$MeanM > 8*rhizoglyphus_robini_expression_values$MeanF,"col"] <- "steelblue"
-rhizoglyphus_robini_expression_values[(rhizoglyphus_robini_expression_values$MeanF) & rhizoglyphus_robini_expression_values$MeanF > 8*rhizoglyphus_robini_expression_values$MeanM,"col"] <- "steelblue"
+rhizoglyphus_robini_expression_values[(rhizoglyphus_robini_expression_values$MeanM) & rhizoglyphus_robini_expression_values$MeanM > 3.653672*rhizoglyphus_robini_expression_values$MeanF,"col"] <- "steelblue"
+rhizoglyphus_robini_expression_values[(rhizoglyphus_robini_expression_values$MeanF) & rhizoglyphus_robini_expression_values$MeanF > 3.653672*rhizoglyphus_robini_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p4<-ggplot(rhizoglyphus_robini_expression_values, aes(x = (log(rhizoglyphus_robini_expression_values$MeanM)), y = (log(rhizoglyphus_robini_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Rhizoglyphus robini") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.19", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Rhizoglyphus robini") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.52", size=7, parse = TRUE)
 
 tetranychus_urticae_expression_values$col<-"grey"
-tetranychus_urticae_expression_values[(tetranychus_urticae_expression_values$MeanM) & tetranychus_urticae_expression_values$MeanM > 8*tetranychus_urticae_expression_values$MeanF,"col"] <- "steelblue"
-tetranychus_urticae_expression_values[(tetranychus_urticae_expression_values$MeanF) & tetranychus_urticae_expression_values$MeanF > 8*tetranychus_urticae_expression_values$MeanM,"col"] <- "steelblue"
+tetranychus_urticae_expression_values[(tetranychus_urticae_expression_values$MeanM) & tetranychus_urticae_expression_values$MeanM > 4.593985*tetranychus_urticae_expression_values$MeanF,"col"] <- "steelblue"
+tetranychus_urticae_expression_values[(tetranychus_urticae_expression_values$MeanF) & tetranychus_urticae_expression_values$MeanF > 4.593985*tetranychus_urticae_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p5<-ggplot(tetranychus_urticae_expression_values, aes(x = (log(tetranychus_urticae_expression_values$MeanM)), y = (log(tetranychus_urticae_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Tetranychus urticae") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.19", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Tetranychus urticae") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.56", size=7, parse = TRUE)
 
 dendroctonus_ponderosae_expression_values$col<-"grey"
-dendroctonus_ponderosae_expression_values[(dendroctonus_ponderosae_expression_values$MeanM) & dendroctonus_ponderosae_expression_values$MeanM > 8*dendroctonus_ponderosae_expression_values$MeanF,"col"] <- "steelblue"
-dendroctonus_ponderosae_expression_values[(dendroctonus_ponderosae_expression_values$MeanF) & dendroctonus_ponderosae_expression_values$MeanF > 8*dendroctonus_ponderosae_expression_values$MeanM,"col"] <- "steelblue"
+dendroctonus_ponderosae_expression_values[(dendroctonus_ponderosae_expression_values$MeanM) & dendroctonus_ponderosae_expression_values$MeanM > 1.973836*dendroctonus_ponderosae_expression_values$MeanF,"col"] <- "steelblue"
+dendroctonus_ponderosae_expression_values[(dendroctonus_ponderosae_expression_values$MeanF) & dendroctonus_ponderosae_expression_values$MeanF > 1.973836*dendroctonus_ponderosae_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p6<-ggplot(dendroctonus_ponderosae_expression_values, aes(x = (log(dendroctonus_ponderosae_expression_values$MeanM)), y = (log(dendroctonus_ponderosae_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Dendroctonus ponderosae") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.3", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Dendroctonus ponderosae") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.69", size=7, parse = TRUE)
 
 mayetiola_destructor_expression_values$col<-"grey"
 mayetiola_destructor_expression_values[(mayetiola_destructor_expression_values$MeanM) & mayetiola_destructor_expression_values$MeanM > 2.141466*mayetiola_destructor_expression_values$MeanF,"col"] <- "steelblue"
@@ -197,64 +201,70 @@ geom_point(alpha=0.005) + ggtitle("Mayetiola destructor") + theme(plot.title = e
 annotate("text", x = -15, y = 8, label = "r == 0.76", size=7, parse = TRUE)
 
 teleopsis_dalmanni_expression_values$col<-"grey"
-teleopsis_dalmanni_expression_values[(teleopsis_dalmanni_expression_values$MeanM) & teleopsis_dalmanni_expression_values$MeanM > 8*teleopsis_dalmanni_expression_values$MeanF,"col"] <- "steelblue"
-teleopsis_dalmanni_expression_values[(teleopsis_dalmanni_expression_values$MeanF) & teleopsis_dalmanni_expression_values$MeanF > 8*teleopsis_dalmanni_expression_values$MeanM,"col"] <- "steelblue"
+teleopsis_dalmanni_expression_values[(teleopsis_dalmanni_expression_values$MeanM) & teleopsis_dalmanni_expression_values$MeanM > 3.021215*teleopsis_dalmanni_expression_values$MeanF,"col"] <- "steelblue"
+teleopsis_dalmanni_expression_values[(teleopsis_dalmanni_expression_values$MeanF) & teleopsis_dalmanni_expression_values$MeanF > 3.021215*teleopsis_dalmanni_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p8<-ggplot(teleopsis_dalmanni_expression_values, aes(x = (log(teleopsis_dalmanni_expression_values$MeanM)), y = (log(teleopsis_dalmanni_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Teleopsis dalmanni") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.22", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Teleopsis dalmanni") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.59", size=7, parse = TRUE)
 
 phlebotomus_perniciosus_expression_values$col<-"grey"
-phlebotomus_perniciosus_expression_values[(phlebotomus_perniciosus_expression_values$MeanM) & phlebotomus_perniciosus_expression_values$MeanM > 8*phlebotomus_perniciosus_expression_values$MeanF,"col"] <- "steelblue"
-phlebotomus_perniciosus_expression_values[(phlebotomus_perniciosus_expression_values$MeanF) & phlebotomus_perniciosus_expression_values$MeanF > 8*phlebotomus_perniciosus_expression_values$MeanM,"col"] <- "steelblue"
+phlebotomus_perniciosus_expression_values[(phlebotomus_perniciosus_expression_values$MeanM) & phlebotomus_perniciosus_expression_values$MeanM > 0.7350429*phlebotomus_perniciosus_expression_values$MeanF,"col"] <- "steelblue"
+phlebotomus_perniciosus_expression_values[(phlebotomus_perniciosus_expression_values$MeanF) & phlebotomus_perniciosus_expression_values$MeanF > 0.7350429*phlebotomus_perniciosus_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p9<-ggplot(phlebotomus_perniciosus_expression_values, aes(x = (log(phlebotomus_perniciosus_expression_values$MeanM)), y = (log(phlebotomus_perniciosus_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Phlebotomus perniciosus") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.59", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Phlebotomus perniciosus") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.87", size=7, parse = TRUE)
 
 lygus_hesperus_expression_values$col<-"grey"
-lygus_hesperus_expression_values[(lygus_hesperus_expression_values$MeanM) & lygus_hesperus_expression_values$MeanM > 8*lygus_hesperus_expression_values$MeanF,"col"] <- "steelblue"
-lygus_hesperus_expression_values[(lygus_hesperus_expression_values$MeanF) & lygus_hesperus_expression_values$MeanF > 8*lygus_hesperus_expression_values$MeanM,"col"] <- "steelblue"
+lygus_hesperus_expression_values[(lygus_hesperus_expression_values$MeanM) & lygus_hesperus_expression_values$MeanM > 0.6699066*lygus_hesperus_expression_values$MeanF,"col"] <- "steelblue"
+lygus_hesperus_expression_values[(lygus_hesperus_expression_values$MeanF) & lygus_hesperus_expression_values$MeanF > 0.6699066*lygus_hesperus_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p10<-ggplot(lygus_hesperus_expression_values, aes(x = (log(lygus_hesperus_expression_values$MeanM)), y = (log(lygus_hesperus_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Lygus hesperus") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.49", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Lygus hesperus") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.88", size=7, parse = TRUE)
 
 athalia_rosae_expression_values$col<-"grey"
-athalia_rosae_expression_values[(athalia_rosae_expression_values$MeanM) & athalia_rosae_expression_values$MeanM > 8*athalia_rosae_expression_values$MeanF,"col"] <- "steelblue"
-athalia_rosae_expression_values[(athalia_rosae_expression_values$MeanF) & athalia_rosae_expression_values$MeanF > 8*athalia_rosae_expression_values$MeanM,"col"] <- "steelblue"
+athalia_rosae_expression_values[(athalia_rosae_expression_values$MeanM) & athalia_rosae_expression_values$MeanM > 1.937095*athalia_rosae_expression_values$MeanF,"col"] <- "steelblue"
+athalia_rosae_expression_values[(athalia_rosae_expression_values$MeanF) & athalia_rosae_expression_values$MeanF > 1.937095*athalia_rosae_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p11<-ggplot(athalia_rosae_expression_values, aes(x = (log(athalia_rosae_expression_values$MeanM)), y = (log(athalia_rosae_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 xlab("Log male expression") + ylab("Log female expression") + scale_color_identity() + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Athalia rosae") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.3", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Athalia rosae") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.75", size=7, parse = TRUE)
 
 ceratosolen_solmsi_expression_values$col<-"grey"
-ceratosolen_solmsi_expression_values[(ceratosolen_solmsi_expression_values$MeanM) & ceratosolen_solmsi_expression_values$MeanM > 8*ceratosolen_solmsi_expression_values$MeanF,"col"] <- "steelblue"
-ceratosolen_solmsi_expression_values[(ceratosolen_solmsi_expression_values$MeanF) & ceratosolen_solmsi_expression_values$MeanF > 8*ceratosolen_solmsi_expression_values$MeanM,"col"] <- "steelblue"
+ceratosolen_solmsi_expression_values[(ceratosolen_solmsi_expression_values$MeanM) & ceratosolen_solmsi_expression_values$MeanM > 2.363925*ceratosolen_solmsi_expression_values$MeanF,"col"] <- "steelblue"
+ceratosolen_solmsi_expression_values[(ceratosolen_solmsi_expression_values$MeanF) & ceratosolen_solmsi_expression_values$MeanF > 2.363925*ceratosolen_solmsi_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p12<-ggplot(ceratosolen_solmsi_expression_values, aes(x = (log(ceratosolen_solmsi_expression_values$MeanM)), y = (log(ceratosolen_solmsi_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Ceratosolen solmsi") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.32", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Ceratosolen solmsi") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.7", size=7, parse = TRUE)
 
 nasonia_giraulti_expression_values$col<-"grey"
-nasonia_giraulti_expression_values[(nasonia_giraulti_expression_values$MeanM) & nasonia_giraulti_expression_values$MeanM > 8*nasonia_giraulti_expression_values$MeanF,"col"] <- "steelblue"
-nasonia_giraulti_expression_values[(nasonia_giraulti_expression_values$MeanF) & nasonia_giraulti_expression_values$MeanF > 8*nasonia_giraulti_expression_values$MeanM,"col"] <- "steelblue"
+nasonia_giraulti_expression_values[(nasonia_giraulti_expression_values$MeanM) & nasonia_giraulti_expression_values$MeanM > 2.207076*nasonia_giraulti_expression_values$MeanF,"col"] <- "steelblue"
+nasonia_giraulti_expression_values[(nasonia_giraulti_expression_values$MeanF) & nasonia_giraulti_expression_values$MeanF > 2.207076*nasonia_giraulti_expression_values$MeanM,"col"] <- "steelblue"
 
 
 p13<-ggplot(nasonia_giraulti_expression_values, aes(x = (log(nasonia_giraulti_expression_values$MeanM)), y = (log(nasonia_giraulti_expression_values$MeanF)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Nasonia giraulti") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.23", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Nasonia giraulti") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.23", size=7, parse = TRUE)
 
 
 #^^^^ SLEUTH ^^^^^^ #
@@ -285,52 +295,57 @@ geom_point(alpha=0.005) + ggtitle("Planococcus ficus") + theme(plot.title = elem
 annotate("text", x = -15, y = 8, label = "r == 0.19", size=7, parse = TRUE)
 
 agrilus_planipennis_expression_values$col<-"grey"
-agrilus_planipennis_expression_values[(agrilus_planipennis_expression_values$SRR1791269) & agrilus_planipennis_expression_values$SRR1791269 > 8*agrilus_planipennis_expression_values$SRR1791267,"col"] <- "steelblue"
-agrilus_planipennis_expression_values[(agrilus_planipennis_expression_values$SRR1791267) & agrilus_planipennis_expression_values$SRR1791267 > 8*agrilus_planipennis_expression_values$SRR1791269,"col"] <- "steelblue"
+agrilus_planipennis_expression_values[(agrilus_planipennis_expression_values$SRR1791269) & agrilus_planipennis_expression_values$SRR1791269 > 1.861104*agrilus_planipennis_expression_values$SRR1791267,"col"] <- "steelblue"
+agrilus_planipennis_expression_values[(agrilus_planipennis_expression_values$SRR1791267) & agrilus_planipennis_expression_values$SRR1791267 > 1.861104*agrilus_planipennis_expression_values$SRR1791269,"col"] <- "steelblue"
 
 p16<-ggplot(agrilus_planipennis_expression_values, aes(x = (log(agrilus_planipennis_expression_values$SRR1791269)), y = (log(agrilus_planipennis_expression_values$SRR1791267)), color = col)) + geom_point(size=0.7) + 
 xlab("Log male expression") + ylab("Log female expression") + scale_color_identity() + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Agrilus planipennis") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.35", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Agrilus planipennis") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.76", size=7, parse = TRUE)
 
 
 leptinotarsa_decemlineata_expression_values$col<-"grey"
-leptinotarsa_decemlineata_expression_values[(leptinotarsa_decemlineata_expression_values$SRR1827566) & leptinotarsa_decemlineata_expression_values$SRR1827566 > 8*leptinotarsa_decemlineata_expression_values$SRR1827565,"col"] <- "steelblue"
-leptinotarsa_decemlineata_expression_values[(leptinotarsa_decemlineata_expression_values$SRR1827565) & leptinotarsa_decemlineata_expression_values$SRR1827565 > 8*leptinotarsa_decemlineata_expression_values$SRR1827566,"col"] <- "steelblue"
+leptinotarsa_decemlineata_expression_values[(leptinotarsa_decemlineata_expression_values$SRR1827566) & leptinotarsa_decemlineata_expression_values$SRR1827566 > 2.094005*leptinotarsa_decemlineata_expression_values$SRR1827565,"col"] <- "steelblue"
+leptinotarsa_decemlineata_expression_values[(leptinotarsa_decemlineata_expression_values$SRR1827565) & leptinotarsa_decemlineata_expression_values$SRR1827565 > 2.094005*leptinotarsa_decemlineata_expression_values$SRR1827566,"col"] <- "steelblue"
 
 p17<-ggplot(leptinotarsa_decemlineata_expression_values, aes(x = (log(leptinotarsa_decemlineata_expression_values$SRR1827566)), y = (log(leptinotarsa_decemlineata_expression_values$SRR1827565)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Leptinotarsa decemlineata") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.16", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Leptinotarsa decemlineata") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.65", size=7, parse = TRUE)
 
 pachypsylla_venusta_expression_values$col<-"grey"
-pachypsylla_venusta_expression_values[(pachypsylla_venusta_expression_values$SRR1824580) & pachypsylla_venusta_expression_values$SRR1824580 > 8*pachypsylla_venusta_expression_values$SRR1824579,"col"] <- "steelblue"
-pachypsylla_venusta_expression_values[(pachypsylla_venusta_expression_values$SRR1824579) & pachypsylla_venusta_expression_values$SRR1824579 > 8*pachypsylla_venusta_expression_values$SRR1824580,"col"] <- "steelblue"
+pachypsylla_venusta_expression_values[(pachypsylla_venusta_expression_values$SRR1824580) & pachypsylla_venusta_expression_values$SRR1824580 > 2.180852*pachypsylla_venusta_expression_values$SRR1824579,"col"] <- "steelblue"
+pachypsylla_venusta_expression_values[(pachypsylla_venusta_expression_values$SRR1824579) & pachypsylla_venusta_expression_values$SRR1824579 > 2.180852*pachypsylla_venusta_expression_values$SRR1824580,"col"] <- "steelblue"
 
 p18<-ggplot(pachypsylla_venusta_expression_values, aes(x = (log(pachypsylla_venusta_expression_values$SRR1824580)), y = (log(pachypsylla_venusta_expression_values$SRR1824579)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Pachypsylla venusta") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.14", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Pachypsylla venusta") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.63", size=7, parse = TRUE)
 
 
 bemisia_tabaci_expression_values$col<-"grey"
-bemisia_tabaci_expression_values[(bemisia_tabaci_expression_values$SRR5086010) & bemisia_tabaci_expression_values$SRR5086010 > 8*bemisia_tabaci_expression_values$SRR5086009,"col"] <- "steelblue"
-bemisia_tabaci_expression_values[(bemisia_tabaci_expression_values$SRR5086009) & bemisia_tabaci_expression_values$SRR5086009 > 8*bemisia_tabaci_expression_values$SRR5086010,"col"] <- "steelblue"
+bemisia_tabaci_expression_values[(bemisia_tabaci_expression_values$SRR5086010) & bemisia_tabaci_expression_values$SRR5086010 > 3.277395*bemisia_tabaci_expression_values$SRR5086009,"col"] <- "steelblue"
+bemisia_tabaci_expression_values[(bemisia_tabaci_expression_values$SRR5086009) & bemisia_tabaci_expression_values$SRR5086009 > 3.277395*bemisia_tabaci_expression_values$SRR5086010,"col"] <- "steelblue"
 
 p19<-ggplot(bemisia_tabaci_expression_values, aes(x = (log(bemisia_tabaci_expression_values$SRR5086010)), y = (log(bemisia_tabaci_expression_values$SRR5086009)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Bemisia tabaci") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.13", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Bemisia tabaci") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.54", size=7, parse = TRUE)
 
 
 frankliniella_occidentalis_expression_values$col<-"grey"
-frankliniella_occidentalis_expression_values[(frankliniella_occidentalis_expression_values$SRR1826954) & frankliniella_occidentalis_expression_values$SRR1826954 > 8*frankliniella_occidentalis_expression_values$SRR1826956,"col"] <- "steelblue"
-frankliniella_occidentalis_expression_values[(frankliniella_occidentalis_expression_values$SRR1826956) & frankliniella_occidentalis_expression_values$SRR1826956 > 8*frankliniella_occidentalis_expression_values$SRR1826954,"col"] <- "steelblue"
+frankliniella_occidentalis_expression_values[(frankliniella_occidentalis_expression_values$SRR1826954) & frankliniella_occidentalis_expression_values$SRR1826954 > 2.300444*frankliniella_occidentalis_expression_values$SRR1826956,"col"] <- "steelblue"
+frankliniella_occidentalis_expression_values[(frankliniella_occidentalis_expression_values$SRR1826956) & frankliniella_occidentalis_expression_values$SRR1826956 > 2.300444*frankliniella_occidentalis_expression_values$SRR1826954,"col"] <- "steelblue"
 
 p20<-ggplot(frankliniella_occidentalis_expression_values, aes(x = (log(frankliniella_occidentalis_expression_values$SRR1826954)), y = (log(frankliniella_occidentalis_expression_values$SRR1826956)), color = col)) + geom_point(size=0.7) + 
 scale_color_identity() + xlab("") + ylab("") + 
 theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), panel.background = element_blank(), axis.line = element_line(colour = "grey")) +
-geom_point(alpha=0.005) + ggtitle("Frankliniella occidentalis") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + annotate("text", x = -15, y = 8, label = "italicr ^ 2 == 0.18", size=7, parse = TRUE)
+geom_point(alpha=0.005) + ggtitle("Frankliniella occidentalis") + theme(plot.title = element_text(size=26)) + xlim(-20,10) + ylim(-20,10) + theme(axis.text=element_text(size=20), axis.title=element_text(size=26,face="bold")) + 
+annotate("text", x = -15, y = 8, label = "r == 0.65", size=7, parse = TRUE)
 
 
 png("Diplo_panel_scatter.png", width=1460, height=1460)
