@@ -30,13 +30,13 @@ deactivate
 
 # Getting a distribution of kingdoms/phyla
 # Kingdom
-grep -v '^#' blobplot.blobDB.table.txt | cut -f10 | sort | uniq -c | less ### superkingdom.t.
+grep -v '^#' blobplot.blobDB.table.txt | cut -f9 | sort | uniq -c | less ### superkingdom.t.
 # Phylum
-grep -v '^#' blobplot.blobDB.table.txt | cut -f14 | sort | uniq -c | less ### phylum.t.
+grep -v '^#' blobplot.blobDB.table.txt | cut -f13 | sort | uniq -c | less ### phylum.t.
 
 # Look at those that were annotated as Viruses 
 awk '$18=="Viruses"' blobplot.blobDB.table.txt | less
-awk '$22=="Streptophyta"' blobplot.blobDB.table.txt | less
+awk '$13=="Streptophyta"' blobplot.blobDB.table.txt | less
 
 
 # Filtering abundance before SLEUTH

@@ -2,11 +2,11 @@
 library(ggplot2)
 library(Rmisc)
 
-dat<-read.csv("cor_animal_model.csv")
+dat<-read.csv("cor_animal_model.csv",head=T)
 
 dat1<-summarySE(dat, measurevar='cor',groupvars=c('SexDeterm'))
 
-p1<-ggplot(dat1, aes(x=SexDeterm, y=cor)) + xlab("") + ylab("Mean r ± 1 SE") +
+p1<-ggplot(dat1, aes(x=SexDeterm, y=cor)) + xlab("") + ylab("Mean r ± 1 SE") + ylim(0.375,0.725) +
     geom_errorbar(aes(ymin=cor-se, ymax=cor+se),
                 width=.2,                    # Width of the error bars
                 position=position_dodge(0.9)) + 
@@ -21,7 +21,7 @@ shapiro.test(dat$cor)
 bartlett.test(cor~SexDeterm, data=dat)
 
 A<-aov(cor ~ SexDeterm, data=dat)
-summary()
+summary(A)
 
 
 
