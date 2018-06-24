@@ -1,4 +1,4 @@
-# msc_project_sex_antag
+# Differential gene expression analyses
 QGGA masters project
 
 Instructions on how to run each script are included within the scripts, beginning with master_download.sh. An overview of the structure and outputs of the pipeline can be seen at:
